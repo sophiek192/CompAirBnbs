@@ -1,4 +1,4 @@
-let dataStore: {
+let dataStore = {
     users: [
         {
             uId: 0,
