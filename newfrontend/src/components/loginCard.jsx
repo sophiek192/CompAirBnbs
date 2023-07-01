@@ -41,6 +41,7 @@ function LoginCard() {
             required fullWidth
             id="password-input"          
             label="Password"
+            type="password"
             onChange={(e) => {setPassword(e.target.value)}} 
             margin="dense"
             aria-label="Input password to login"

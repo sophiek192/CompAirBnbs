@@ -15,11 +15,23 @@ function RegisterCard() {
   }
 
   const handleSubmit = () => {
-    // post('/auth/register', {
-    //   email: email,
-    //   password: password,
-    //   name: name
-    // })
+    console.log({
+      email: email,
+      password: password,
+      nameFirst: name,
+      nameLast: name
+    })
+    post('/auth/register', {
+      email: email,
+      password: password,
+      nameFirst: name,
+      nameLast: name
+    })
+    .then((res) => {
+      localStorage.setItem("userId", res.userId);
+      window.open("/trips","_self")
+    
+    })
   }
 
 
@@ -40,6 +52,7 @@ function RegisterCard() {
             sx={{margin: '0 auto', fontSize:'25px'}}
             required fullWidth    
             label="Password" 
+            type="password"
             onChange={(e) => {setPassword(e.target.value)}} 
             margin="dense"
           />
