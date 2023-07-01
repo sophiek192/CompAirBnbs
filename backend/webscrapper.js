@@ -12,27 +12,30 @@ import fs from 'fs';
 async function getBnbInfo() {
     try {
         const response = await axios.get(
-            'https://www.airbnb.com.au/rooms/41508496?adults=1&category_tag=Tag%3A8186&children=0&enable_m3_private_room=true&infants=0&pets=0&search_mode=flex_destinations_search&check_in=2023-08-06&check_out=2023-08-11&source_impression_id=p3_1688197340_ZTpeKseMs7wUmaPX&previous_page_section_name=1000&federated_search_id=a2f26ee7-c80f-46c7-94a2-090403130658E'+ '&modal=DESCRIPTION'
+            'https://www.airbnb.com.au/rooms/41508496?adults=1&category_tag=Tag%3A8186&children=0&enable_m3_private_room=true&infants=0&pets=0&search_mode=flex_destinations_search&check_in=2023-08-06&check_out=2023-08-11&source_impression_id=p3_1688197340_ZTpeKseMs7wUmaPX&previous_page_section_name=1000&federated_search_id=a2f26ee7-c80f-46c7-94a2-090403130658E'
         );
         // console.log(response.data);
 
         fs.writeFile('output.html', response.data, (err) => {
             if (err) throw err;
         });
-        const name = response.data.match(/<meta property="og:description" content=[^\/]*\/>/);
+
+        const rawName = response.data.match(/<meta property="og:description" content=[^\/]*\/>/);
+        const name = rawName[0].replace('<meta property="og:description" content="', "").replace('"/>', "");
         const result = response.data.match(/<meta property="og:title" content=[^\/]*\/>/);
         const img = response.data.match(/<meta property="og:image"[\n\s]*content=[^\/]*\/>/);
-        const desc = response.data.match(/<script id="data-deferred-state".*/);
-        fs.writeFile('.json', response.data, (err) => {
+        const amenities = response.data.match(/{"niobeMinimalClientData"[^<]*/);
+
+        fs.writeFile('amenities.json', amenities[0], (err) => {
             if (err) throw err;
         });
-        console.log(name[0]);
+        console.log(name);
         console.log(result[0]);
         console.log(img);
-        //console.log(desc[0]);
+        //console.log(amenities[0]);
 
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
 
