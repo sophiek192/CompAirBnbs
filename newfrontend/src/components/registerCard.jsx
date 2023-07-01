@@ -20,6 +20,7 @@ function RegisterCard() {
     //   password: password,
     //   name: name
     // })
+
   }
 
 

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import { Box, Button,  Container, Link, TextField, Typography } from "@mui/material"
+import { Stack, Box, Button,  Container, Link, TextField, Typography } from "@mui/material"
 import { post } from "../helpers"
+import { DateField } from '@mui/x-date-pickers/DateField';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider, MobileDatePicker } from "@mui/x-date-pickers";
+import dayjs from 'dayjs';
 
 function CreateTripForm() {
   const [numPeople, setNumPeople] = useState(0)
@@ -18,11 +22,13 @@ function CreateTripForm() {
     justifyContent:'space-between'
   }
   const handleSubmit = () => {
-    // post('/auth/register', {
-    //   email: email,
-    //   password: password,
-    //   name: name
+    // post('/trip/create', {
+    //   numPeople: numPeople,
+    //   location: location,
+    //   links: links,
+    //   date: [startDate, endDate]
     // })
+    window.open("/","_self")
   }
 
   const handleAddLink = () => {
@@ -54,6 +60,31 @@ function CreateTripForm() {
             onChange={(e) => {setLocation(e.target.value)}} 
             margin="dense"
           />
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <Stack spacing={3}>
+              <Box sx = {{display: 'flex'}}>
+                <MobileDatePicker
+                  label="Start Date"
+                  inputFormat="DD/MM/YYYY"
+                  value={startDate}
+                  onChange={(value) => {
+                    setStartDate(value)
+                  }}
+                  renderInput={(params) => <TextField name="start-date-input" {...params} />}
+                />
+                <Typography sx = {{m: 2}}> to </Typography>
+                <MobileDatePicker
+                  label="End Date"
+                  inputFormat="DD/MM/YYYY"
+                  value={endDate}
+                  onChange={(value) => {
+                    setEndDate(value)
+                  }}
+                  renderInput={(params) => <TextField name="end-date-input" {...params} />}
+                />
+              </Box>
+              </Stack>
+          </LocalizationProvider>
           <Box sx={{display:'flex'}}>
             <TextField 
               sx={{margin: '0 auto', fontSize:'25px'}}
