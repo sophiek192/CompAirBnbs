@@ -1,1 +1,57 @@
-{"users":[{"userId":1,"password":"1234qwe","nameFirst":"Felix","nameLast":"Felix","email":"felixcao@gmail.com","organiser":[],"attending":[]},{"userId":2,"password":"12345QWER","nameFirst":"Felix Cao","nameLast":"Felix Cao","email":"Felix@gmail.com","organiser":[],"attending":[]}],"trips":[]}
+{
+    "users": [
+        {
+            "userId": "1",
+            "password": "felixcao",
+            "nameFirst": "felix",
+            "nameLast": "felix",
+            "email": "f@email.com",
+            "organiser": [],
+            "attending": []
+        },
+        {
+            "userId": "2",
+            "password": "felixcao",
+            "nameFirst": "a",
+            "nameLast": "a",
+            "email": "a@email.com",
+            "organiser": [],
+            "attending": [
+                "1"
+            ]
+        },
+        {
+            "userId": "3",
+            "password": "felixcao",
+            "nameFirst": "b",
+            "nameLast": "b",
+            "email": "b@email.com",
+            "organiser": [],
+            "attending": [
+                "1"
+            ]
+        }
+    ],
+    "trips": [
+        {
+            "name": "the boyz",
+            "tripId": "1",
+            "numPpl": "12",
+            "date": [
+                "2023-07-01T14:00:00.000Z",
+                "2023-07-02T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                {
+                    "userId": "1",
+                    "notifications": []
+                }
+            ],
+            "location": "london",
+            "bnbs": []
+        }
+    ]
+}

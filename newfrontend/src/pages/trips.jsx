@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Box, Grid, Typography, Modal } from '@mui/material'
 import { Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
@@ -7,21 +7,10 @@ import TripCard from "../components/tripCard";
 import CreateTripForm from "../components/createTripForm"
 
 function Trips() {
-  // const [trip, setTrips] = useState([]);
   const [open, setOpen] = React.useState(false);
+  const [trips, setTrips] = React.useState([]);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const trips = [
-    {tripId:0, organisers:[], numPeople:12, location:'Wales'},
-    {tripId:1, organisers:[], numPeople:10, location:'Cessnock'},
-    {tripId:2, organisers:[], numPeople:1, location:'Sydney'},
-    {tripId:3, organisers:[], numPeople:2, location:'Mumbai'},
-    {tripId:4, organisers:[], numPeople:32, location:'Dubai'},
-    {tripId:5, organisers:[], numPeople:14, location:'Greece'},
-    {tripId:6, organisers:[], numPeople:18, location:'Amsterdam'},
-    {tripId:7, organisers:[], numPeople:21, location:'Sydneham'}
-  ]
 
 
   const modalStyle = {
@@ -36,6 +25,12 @@ function Trips() {
     p: 4,
   };
 
+  useEffect(() => {
+    get(`/trips?userId=${localStorage.getItem('userId')}`)
+    .then((res) => {
+      setTrips(res.trips)
+    })
+  }, [])
 
 
 
@@ -50,7 +45,7 @@ function Trips() {
           </Button>
         </Box>
       <Grid container spacing={8}>
-        {trips.map(() => <TripCard/>)}
+        {trips.map((trip,i) => <TripCard trip={trip}/>)}
       </Grid>
       </Box>
       <Modal
@@ -62,8 +57,6 @@ function Trips() {
         </Box>
       </Modal>
   );
-      
-     
     </>
   )
 }
