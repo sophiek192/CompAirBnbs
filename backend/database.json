@@ -1,1 +1,124 @@
-{"users":[{"userId":1,"password":"1234qwe","nameFirst":"Felix","nameLast":"Felix","email":"felixcao@gmail.com","organiser":[],"attending":[]},{"userId":2,"password":"12345QWER","nameFirst":"Felix Cao","nameLast":"Felix Cao","email":"Felix@gmail.com","organiser":[],"attending":[]}],"trips":[]}
+{
+    "users": [
+        {
+            "userId": 1,
+            "password": "lol",
+            "nameFirst": "Felix",
+            "nameLast": "Felix",
+            "email": "felixcao@gmail.com",
+            "organiser": [],
+            "attending": []
+        },
+        {
+            "userId": 2,
+            "password": "12345QWER",
+            "nameFirst": "Felix Cao",
+            "nameLast": "Felix Cao",
+            "email": "Felix@gmail.com",
+            "organiser": [],
+            "attending": []
+        }
+    ],
+    "trips": [
+        {
+            "name": "felix's holiday",
+            "tripId": 2,
+            "numPpl": "12",
+            "date": [
+                "2023-07-22T14:00:00.000Z",
+                "2023-07-28T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                {
+                    "userId": "1",
+                    "notifications": []
+                }
+            ],
+            "location": "london",
+            "bnbs": []
+        },
+        {
+            "name": "aaravs's holiday",
+            "tripId": 1,
+            "numPpl": "20",
+            "date": [
+                "2023-07-22T14:00:00.000Z",
+                "2023-07-28T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                {
+                    "userId": "1",
+                    "notifications": []
+                }
+            ],
+            "location": "new zealand",
+            "bnbs": []
+        },
+        {
+            "name": "anish's holiday",
+            "tripId": 3,
+            "numPpl": "12",
+            "date": [
+                "2023-07-22T14:00:00.000Z",
+                "2023-07-28T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                {
+                    "userId": "1",
+                    "notifications": []
+                }
+            ],
+            "location": "europe",
+            "bnbs": []
+        },
+        {
+            "name": "sophie's holiday",
+            "tripId": 4,
+            "numPpl": "5",
+            "date": [
+                "2023-07-22T14:00:00.000Z",
+                "2023-07-28T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                {
+                    "userId": "1",
+                    "notifications": []
+                }
+            ],
+            "location": "poland",
+            "bnbs": []
+        },
+        {
+            "name": "elizabeth's holiday",
+            "tripId": 2,
+            "numPpl": "9",
+            "date": [
+                "2023-07-22T14:00:00.000Z",
+                "2023-07-28T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                {
+                    "userId": "1",
+                    "notifications": []
+                }
+            ],
+            "location": "new york",
+            "bnbs": []
+        }
+    ]
+}

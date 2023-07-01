@@ -1,33 +1,21 @@
 import { getData, setData } from './dataStore.js';
+import HTTPError from 'http-errors';
 
 
-export function createTrip (userId, firstName, lastName, numPeople, airBnbLinks, date, location) {
+export function createTrip(name, userId, numPeople, airBnbLinks, date, location) {
     const data = getData();
     const id = data.trips.length + 1;
 
-    // Testing input
-    if (lastName === undefined || firstName === undefined || airBnbLinks === undefined) {
-        throw HTTPError(400, 'Not enough input');
-    }
-
-    // Testing empty names
-    if (nameFirst.length === 0 || nameLast.length === 0) {
-        throw HTTPError(400, 'Name not valid');
-    }
-
     const newTrip = {
+        name: name,
         tripId: id,
         numPpl: numPeople,
-        date,
-        oragnisers: [{
-            userId,
-            firstName,
-            lastName }],
-        
+        date: date,
+        organisers: [userId],
         attendees: [{
             userId,
-            firstName,
-            lastName }],
+            notifications:[]
+          }],
         airBnbLinks,
         location,
         bnbs: [],
@@ -47,15 +35,18 @@ export function tripsList(userId) {
     }
 
     const data = getData();
-    for (trips of data.trips) {
-        if (trips.airbnbLinks.userId === userId) {
+    for (let trip of data.trips) {
+        if (trip.attendees.map(attendee => parseInt(attendee.userId)).includes(userId)) {
             returnArray.push({
-                tripsId: trips.id,
-                numPeople: trips.attendees.length,
-                location: trips.location
+                name: trip.name,
+                tripId: trip.tripId,
+                numPeople: trip.numPeople,
+                location: trip.location,
+                date: trip.date
             });
         }
     }
+    console.log(returnArray)
     return { 
         trips: returnArray
     }
@@ -69,6 +60,29 @@ export function tripDetails(tripId) {
     const index = data.users.findIndex(x => x.tripId === tripId);
     const tripIdIndex = data.users[index].sessions.indexOf(tripId);
     data.users[index].sessions.splice(tripIdIndex, 1);    
+    setData(data);
+    return {};
+}
+
+export function inviteToTrip(userId, tripId) {
+    if (tripId == '') {
+        throw HTTPError(400, 'Trip is not valid');
+    }
+    
+    const user = data.users.find(x => x.userId === userId);
+    const trip = data.users.find(x => x.tripId === tripId);
+
+    // user already in trip
+    if (user.attending.includes(tripId)) {
+      return;
+    }
+
+    user.attending.push(tripId)
+    trip.attendees.push({
+        "userId": userId,
+        "notifications": trip.bnbs
+    })
+  
     setData(data);
     return {};
 }

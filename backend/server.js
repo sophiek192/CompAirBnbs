@@ -6,7 +6,7 @@ import request from 'sync-request';
 import HTTPError from 'http-errors';
 import fs from 'fs';
 import { authLogin, authRegister } from './auth.js';
-import { createTrip, tripsList } from './trip.js';
+import { createTrip, tripsList, inviteToTrip } from './trip.js';
 import { setData } from './dataStore.js';
 import errorHandler from 'middleware-http-errors';
 
@@ -50,19 +50,23 @@ app.post('/auth/register', (req, res) => {
 
 
 app.post('/trip/create', (req, res) => {
-  console.log(req.body)
-    const { userId, numPeople, airBnbLinks, date, location } = req.body;
-    res.json(createTrip(userId, numPeople, airBnbLinks, date, location));
+    const { name, userId, numPeople, airBnbLinks, date, location } = req.body;
+    res.json(createTrip(name, userId, numPeople, airBnbLinks, date, location));
 })
 
-app.get('/trips/list', (req, res) => {
+app.post('/trip/invite', (req, res) => {
+  const { otherId, tripId } = req.body;
+  res.json(inviteToTrip(otherId, tripId));
+})
+
+app.get('/trips', (req, res) => {
     const userId = String(req.query.userId);
-    res.json(tripsList(token, parseInt(userId)));
+    res.json(tripsList(parseInt(userId)));
 })
 
 app.get('/trips/details', (req, res) => {
     const tripId = String(req.query.tripId);
-    res.json(createTrip(token, parseInt(tripId)));
+    res.json(createTrip(parseInt(tripId)));
 })
 
 app.listen(PORT, HOST, () => {

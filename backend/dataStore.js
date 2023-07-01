@@ -8,7 +8,7 @@ let data = {
 
 // reads from dataStore file
 const save = () => {
-    const jsonstr = JSON.stringify(data);
+    const jsonstr = JSON.stringify(data, null, 4);
     fs.writeFileSync('./database.json', jsonstr);
   };
   
