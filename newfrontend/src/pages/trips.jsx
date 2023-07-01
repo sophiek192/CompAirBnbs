@@ -7,7 +7,6 @@ import TripCard from "../components/tripCard";
 import CreateTripForm from "../components/createTripForm"
 
 function Trips() {
-  // const [trip, setTrips] = useState([]);
   const [open, setOpen] = React.useState(false);
   const [trips, setTrips] = React.useState([]);
   const handleOpen = () => setOpen(true);
@@ -58,8 +57,6 @@ function Trips() {
         </Box>
       </Modal>
   );
-      
-     
     </>
   )
 }

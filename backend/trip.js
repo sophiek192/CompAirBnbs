@@ -56,19 +56,16 @@ export function tripDetails(tripId) {
     if (tripId == '') {
         throw HTTPError(400, 'Trip is not valid');
     }
-    
-    const index = data.users.findIndex(x => x.tripId === tripId);
-    const tripIdIndex = data.users[index].sessions.indexOf(tripId);
-    data.users[index].sessions.splice(tripIdIndex, 1);    
-    setData(data);
-    return {};
+    const data = getData();
+    const trip = data.users.findIndex(x => x.tripId === tripId);
+    return {trip: trip};
 }
 
 export function inviteToTrip(userId, tripId) {
     if (tripId == '') {
         throw HTTPError(400, 'Trip is not valid');
     }
-    
+    const data = getData();
     const user = data.users.find(x => x.userId === userId);
     const trip = data.users.find(x => x.tripId === tripId);
 

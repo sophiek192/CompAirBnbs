@@ -6,7 +6,8 @@ import request from 'sync-request';
 import HTTPError from 'http-errors';
 import fs from 'fs';
 import { authLogin, authRegister } from './auth.js';
-import { createTrip, tripsList, inviteToTrip } from './trip.js';
+import { createTrip, tripsList, inviteToTrip, tripDetails } from './trip.js';
+import { usersList } from './user.js';
 import { setData } from './dataStore.js';
 import errorHandler from 'middleware-http-errors';
 
@@ -64,9 +65,13 @@ app.get('/trips', (req, res) => {
     res.json(tripsList(parseInt(userId)));
 })
 
-app.get('/trips/details', (req, res) => {
-    const tripId = String(req.query.tripId);
-    res.json(createTrip(parseInt(tripId)));
+app.get('/trip', (req, res) => {
+  const tripId = String(req.query.tripId);
+  res.json(tripDetails(parseInt(tripId)));
+})
+
+app.get('/users', (req, res) => {
+  res.json(usersList());
 })
 
 app.listen(PORT, HOST, () => {

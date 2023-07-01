@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import {Card, Grid, CardActions, CardMedia, CardContent, Box, Button,  Container, Link, TextField, Typography } from "@mui/material"
-
+import {Card, Grid, CardActions, CardMedia, CardContent, Box, Button,  Container, TextField, Typography } from "@mui/material"
+import {Link} from 'react-router-dom'
 function TripCard({ trip }) {
   const dateString = () => {
     let startDate = new Date(trip.date[0])
@@ -29,7 +29,7 @@ function TripCard({ trip }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
+        <Button size="small" component={Link} to={`/trip/${trip.tripId}`}>More Details</Button>
         <Button size="small">Learn More</Button>
       </CardActions>
     </Card>

@@ -1,75 +1,70 @@
 import React, { useState, useEffect } from "react";
-import { Button, Box, Grid, Typography, Modal } from '@mui/material'
+import { OutlinedInput, InputLabel, MenuItem, FormControl, ListItemText,Select,Checkbox, Menu } from '@mui/material'
+
 import { Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import { get } from '../helpers'
 import TripCard from "../components/tripCard";
 import CreateTripForm from "../components/createTripForm"
+import { useParams } from "react-router-dom";
 
 function Trip() {
-//   const handleClick = () => {
+  let { tripId } = useParams()
+  const [users, setUsers] = useState([])
+  const [trip, setTrip] = useState({})
+  const [personName, setPersonName] = React.useState([]);
+  const handleClick = () => {
     
-//   }
+  }
 
-//   const ITEM_HEIGHT = 48;
-// const ITEM_PADDING_TOP = 8;
-// const MenuProps = {
-//   PaperProps: {
-//     style: {
-//       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-//       width: 250,
-//     },
-//   },
-// };
+    const MenuProps = {
+      PaperProps: {
+        style: {
+          maxHeight: 48 * 4.5 + 8,
+          width: 250,
+        },
+      },
+    };
   useEffect(() => {
-    
+    get(`/trip?tripId?=${tripId}`)
+    .then(res => {setTrip(res.trip)})
+    .then(() => {
+      get('/users')
+      .then(res => {setUsers(res.users)
+      console.log(res)
+      })
+    })
   }, [])
-// const names = [
-//   'Oliver Hansen',
-//   'Van Henry',
-//   'April Tucker',
-//   'Ralph Hubbard',
-//   'Omar Alexander',
-//   'Carlos Abbott',
-//   'Miriam Wagner',
-//   'Bradley Wilkerson',
-//   'Virginia Andrews',
-//   'Kelly Snyder',
-// ];
 
-
-//   const [personName, setPersonName] = React.useState([]);
-
-  // const handleChange = (event) => {
-  //   const {
-  //     target: { value },
-  //   } = event;
-  //   setPersonName(
-  //     // On autofill we get a stringified value.
-  //     typeof value === 'string' ? value.split(',') : value,
-  //   );
-  // };
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(typeof value === 'string' ? value.split(',') : value,
+    );
+  };
   return (
     <>
-    {/* <InputLabel id="multiple-checkbox">Select People</InputLabel>
+    <InputLabel id="multiple-checkbox">Select People</InputLabel>
     <Select
       labelId="multiple-checkbox"
       id="demo-multiple-checkbox"
       multiple
+      fullWidth
       value={personName}
       onChange={handleChange}
       input={<OutlinedInput label="Tag" />}
       renderValue={(selected) => selected.join(', ')}
       MenuProps={MenuProps}
     >
-      {names.map((name) => (
-        <MenuItem key={name} value={name}>
-          <Checkbox checked={personName.indexOf(name) > -1} />
-          <ListItemText primary={name} />
+      {users.map((user,i) => (
+        <MenuItem key={i} value={user.nameFirst}>
+          <Checkbox checked={personName.indexOf(user.nameFirst) > -1} />
+          <ListItemText primary={user.nameFirst} />
         </MenuItem>
       ))}
-    </Select> */}
-    <Button onClick={handleClick}>Invite!</Button>
+    </Select>
+    {/* <Button onClick={handleClick}>Invite!</Button> */}
     </>
   )
 }
