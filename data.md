@@ -9,7 +9,7 @@ let dataStore = {
             attending: [0, 4, 5]
         }
     ],
-    Trip: [
+    trip: [
         {
             tripId: 0,
             numPpl: 6,
