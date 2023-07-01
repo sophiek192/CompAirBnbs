@@ -1,30 +1,33 @@
 import validator from 'validator';
-import { getData, setData } from '../dataStore.js';
+import { getData, setData } from './dataStore.js';
 //import * as config from './config.json';
 
 export function authRegister(email, password, nameFirst, nameLast) {
     const data = getData();
-    //  const errorCheck = isRegisterValid(email)
 
+    // Testing input
+    if (nameLast === undefined) {
+        throw HTTPError(400, 'Not enough input');
+    }
 
-    //Check that the email hasen't already been created
-    for (const currUser of data.members) {
-        if (currUser.email === email) {
-       // throw HTTPError(400, 'email entered already exists!');
-            console.log('email entered already exists!');
+    // Testing valid email
+    if (validator.isEmail(email) === false) {
+        throw HTTPError(400, 'Email invalid');
+    }
+
+    // Testing unique email
+    for (const user of data.users) {
+        if (user.email === email) {
+        throw HTTPError(400, 'This email has already been registered');
         }
     }
 
-
-    const errorCheck = isRegisterValid(email, password, nameFirst, nameLast);
-    if (errorCheck.isError) {
-       // throw HTTPError(400, errorCheck.error);
-       console.log(errorcheck.error);
+    // Testing empty names
+    if (nameFirst.length === 0 || nameLast.length === 0) {
+        throw HTTPError(400, 'Name not valid');
     }
 
-
     const id = data.users.length + 1;
-
     const newMember = {
         userId: id,
         pasword,
@@ -46,6 +49,18 @@ export function authRegister(email, password, nameFirst, nameLast) {
 export function authLogin(email) {
     const data = getData();
 
+    // Error: Invalid email
+    if (!data.users.some(x => x.email === email) || email === '') {
+        throw HTTPError(400, 'Invalid Email');
+    }
+    // Retrieve user information
+    const user = data.users.find(x => x.email === email);
+
+    // Error: Invalid password
+    if (user.password !== password) {
+        throw HTTPError(400, 'Invalid Password');
+    }
+
     for (const currUser of data.users) {
         if (currUser.email === email && currUser.password == password) {
             return {
@@ -54,30 +69,4 @@ export function authLogin(email) {
         }
     }
     
-  //  throw HTTPError(400, 'Invalid email or password!');
 }
-
-
-function isRegisterValid(email, password) {
-    const errorCheck = {
-      isError: false,
-      error: ''
-    };
-  
-    if (!(validator.isEmail(email))) {
-        errorCheck.isError = true;
-        errorCheck.error = 'invalid email!';
-    } else if (password.length < 6) {
-        errorCheck.isError = true;
-        errorCheck.error = 'password too short!';
-    } else if (nameFirst.length < 1 || nameFirst.length > 50) {
-        errorCheck.isError = true;
-        errorCheck.error = 'invalid name length!';
-    } else if (nameLast.length < 1 || nameLast.length > 50) {
-        errorCheck.isError = true;
-        errorCheck.error = 'invalid name length!';
-    }
-  
-    return errorCheck;
-  }
-  
