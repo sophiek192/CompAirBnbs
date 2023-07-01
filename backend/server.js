@@ -6,7 +6,8 @@ import request from 'sync-request';
 import HTTPError from 'http-errors';
 import fs from 'fs';
 import { authLogin, authRegister } from './auth';
-import { createTrip } from './trip';
+import { createTrip, tripsList } from './trip';
+
 
 
 
@@ -59,10 +60,10 @@ app.post('/create/trip', (req, res) => {
 
 app.get('/trips/list', (req, res) => {
     const userId = String(req.query.userId);
-    res.json(standupActiveV1(token, parseInt(userId)));
+    res.json(tripsList(token, parseInt(userId)));
 })
 
 app.get('/trips/details', (req, res) => {
     const tripId = String(req.query.tripId);
-    res.json(standupActiveV1(token, parseInt(tripId)));
+    res.json(createTrip(token, parseInt(tripId)));
 })
