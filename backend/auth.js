@@ -6,7 +6,7 @@ import HTTPError from 'http-errors';
 export function authRegister(email, password, nameFirst, nameLast) {
     const data = getData();
 
-
+    console.log(email, password, nameFirst, nameLast);
     const errorCheck = isRegisterValid(email, password, nameFirst, nameLast);
     if (errorCheck.isError) {
         console.log(errorCheck.error);
@@ -23,7 +23,7 @@ export function authRegister(email, password, nameFirst, nameLast) {
     const id = data.users.length + 1;
     const newMember = {
         userId: id,
-        pasword,
+        password: password,
         nameFirst: nameFirst,
         nameLast: nameLast,
         email: email,
@@ -86,6 +86,6 @@ function isRegisterValid(email, password, nameFirst, nameLast) {
     }
   
     return errorCheck;
-  }
 }
+
 

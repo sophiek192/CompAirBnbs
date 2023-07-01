@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-let dataStore = {
+let data = {
     users: [],
     trips: [],
 }
@@ -14,11 +14,11 @@ const save = () => {
   
 // Use getData() to access the data
 function getData() {
-    return dataStore;
+    return data;
 }
   
-function setData(dataStore) {
-    data = dataStore;
+function setData(newData) {
+    data = newData;
     save();
   }
 
