@@ -5,6 +5,16 @@ export function createTrip (userId, firstName, lastName, numPeople, airBnbLinks,
     const data = getData();
     const id = data.trips.length + 1;
 
+    // Testing input
+    if (lastName === undefined || firstName === undefined || airbnbLinks === undefined) {
+        throw HTTPError(400, 'Not enough input');
+    }
+
+    // Testing empty names
+    if (nameFirst.length === 0 || nameLast.length === 0) {
+        throw HTTPError(400, 'Name not valid');
+    }
+
     const newTrip = {
         tripId: id,
         numPpl: numPeople,
@@ -30,10 +40,12 @@ export function createTrip (userId, firstName, lastName, numPeople, airBnbLinks,
     };
 }
 
-
-
 export function tripsList(userId) {
     let returnArray = [];
+    if (userId == '') {
+        throw HTTPError(400, 'User is not valid')
+    }
+
     const data = getData();
     for (trips of data.trips) {
         if (trips.airbnbLinks.userId === userId) {
@@ -49,7 +61,14 @@ export function tripsList(userId) {
     }
 }
 
-
 export function tripDetails(tripId) {
-
+    if (tripId == '') {
+        throw HTTPError(400, 'Trip is not valid');
+    }
+    
+    const index = data.users.findIndex(x => x.tripId === tripId);
+    const tripIdIndex = data.users[index].sessions.indexOf(tripId);
+    data.users[index].sessions.splice(tripIdIndex, 1);    
+    setData(data);
+    return {};
 }

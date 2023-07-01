@@ -23,9 +23,7 @@ export function authRegister(email, password, nameFirst, nameLast) {
     //     throw HTTPError(400, errorCheck.error);
     // }
 
-
     const id = data.users.length + 1;
-
     const newMember = {
         userId: id,
         password: password,
@@ -47,6 +45,18 @@ export function authRegister(email, password, nameFirst, nameLast) {
 export function authLogin(email) {
     const data = getData();
 
+    // Error: Invalid email
+    if (!data.users.some(x => x.email === email) || email === '') {
+        throw HTTPError(400, 'Invalid Email');
+    }
+    // Retrieve user information
+    const user = data.users.find(x => x.email === email);
+
+    // Error: Invalid password
+    if (user.password !== password) {
+        throw HTTPError(400, 'Invalid Password');
+    }
+
     for (const currUser of data.users) {
         if (currUser.email === email && currUser.password == password) {
             return {
@@ -54,12 +64,16 @@ export function authLogin(email) {
             };
         }
     }
-    
     throw HTTPError(400, 'Invalid email or password!');
 }
 
 
 // function isRegisterValid(email, password) {
+//     const errorCheck = {
+//       isError: false,
+//       error: ''
+//     };
+// function isRegisterValid(email, password, nameFirst, nameLast) {
 //     const errorCheck = {
 //       isError: false,
 //       error: ''
@@ -81,4 +95,5 @@ export function authLogin(email) {
   
 //     return errorCheck;
 //   }
-  
+//}
+
