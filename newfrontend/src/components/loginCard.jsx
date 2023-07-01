@@ -15,10 +15,17 @@ function LoginCard() {
   }
 
   const handleSubmit = () => {
-    // post('/auth/login', {
-    //   email: email,
-    //   password: password
-    // })
+    console.log(email, password)
+    post('/auth/login', {
+      email: email,
+      password: password
+    })
+    .then((res) => {
+      console.log(res)
+      localStorage.setItem("userId", res.userId);
+      window.open("/trips","_self")
+    })
+    .catch((err) => alert('Try Again!'))
   }
 
 

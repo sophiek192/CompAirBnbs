@@ -39,7 +39,7 @@ export function authRegister(email, password, nameFirst, nameLast) {
     };
 }
 
-export function authLogin(email) {
+export function authLogin(email, password) {
     const data = getData();
 
     // Error: Invalid email
