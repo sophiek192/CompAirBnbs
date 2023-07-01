@@ -49,7 +49,8 @@ app.post('/auth/register', (req, res) => {
 })
 
 
-app.post('/create/trip', (req, res) => {
+app.post('/trip/create', (req, res) => {
+  console.log(req.body)
     const { userId, numPeople, airBnbLinks, date, location } = req.body;
     res.json(createTrip(userId, numPeople, airBnbLinks, date, location));
 })

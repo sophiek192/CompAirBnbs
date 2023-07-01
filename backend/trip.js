@@ -6,7 +6,7 @@ export function createTrip (userId, firstName, lastName, numPeople, airBnbLinks,
     const id = data.trips.length + 1;
 
     // Testing input
-    if (lastName === undefined || firstName === undefined || airbnbLinks === undefined) {
+    if (lastName === undefined || firstName === undefined || airBnbLinks === undefined) {
         throw HTTPError(400, 'Not enough input');
     }
 

@@ -22,13 +22,21 @@ function CreateTripForm() {
     justifyContent:'space-between'
   }
   const handleSubmit = () => {
-    // post('/trip/create', {
-    //   numPeople: numPeople,
-    //   location: location,
-    //   links: links,
-    //   date: [startDate, endDate]
-    // })
-    window.open("/","_self")
+    console.log({
+      userId: localStorage.getItem("userId"),
+      location: location,
+      airBnbLinks: links,
+      date: [startDate, endDate],
+      numPeople: numPeople
+    })
+    post('/trip/create', {
+      userId: localStorage.getItem("userId"),
+      location: location,
+      airBnbLinks: links,
+      date: [startDate, endDate],
+      numPeople: numPeople
+    }).then((res) => console.log(res))
+    // window.open("/","_self")
   }
 
   const handleAddLink = () => {
