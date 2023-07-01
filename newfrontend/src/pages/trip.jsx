@@ -1,47 +1,75 @@
 import React, { useState, useEffect } from "react";
-import { Button, OutlinedInput, InputLabel, MenuItem, FormControl, ListItemText,Select,Checkbox, Menu } from '@mui/material'
-
+import { Box,Button, Menu, MenuItem, StyledMenu, IconButton, Typography} from '@mui/material'
+import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-import AddIcon from '@mui/icons-material/Add';
 import { get, post } from '../helpers'
-import TripCard from "../components/tripCard";
-import CreateTripForm from "../components/createTripForm"
 import { useParams } from "react-router-dom";
+import Tinder from "../components/tinder";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import SendIcon from '@mui/icons-material/Send';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 function Trip() {
+  const StyledMenu = styled((props) => (
+    <Menu
+      elevation={0}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'right',
+      }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      {...props}
+    />
+  ))(({ theme }) => ({
+    '& .MuiPaper-root': {
+      borderRadius: 6,
+      marginTop: theme.spacing(1),
+      minWidth: 180,
+      color:
+        theme.palette.mode === 'light' ? 'rgb(55, 65, 81)' : theme.palette.grey[300],
+      boxShadow:
+        'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
+      '& .MuiMenu-list': {
+        padding: '4px 0',
+      },
+      '& .MuiMenuItem-root': {
+        '& .MuiSvgIcon-root': {
+          fontSize: 18,
+          color: theme.palette.text.secondary,
+          marginRight: theme.spacing(1.5),
+        },
+        '&:active': {
+          backgroundColor: alpha(
+            theme.palette.primary.main,
+            theme.palette.action.selectedOpacity,
+          ),
+        },
+      },
+    },
+  }));
+  
   let { tripId } = useParams()
   const [users, setUsers] = useState([])
   const [trip, setTrip] = useState({})
   const [nonAttendees, setNonAttendees] = useState([])
   const [inviteIds, setInviteIds] = useState([])
   const [personName, setPersonName] = React.useState([]);
-  const handleClick = () => {
-    console.log(inviteIds)
-    inviteIds.forEach((inviteId) => {
-      console.log(inviteId)
-      post('/trip/invite', {
-        userId: inviteId,
-        tripId: tripId
-      })
+  const handleInvite = (user) => {
+    console.log(user)
+    post('/trip/invite', {
+      userId: user.userId,
+      tripId: tripId
+    })
+    .then(() => {
+      const copy = nonAttendees;
+      copy[copy.indexOf(user)] = {...user, invited:true}
+      setNonAttendees(copy)
     })
   }
-  const handleCheck = (e, i) => {
-    if (e.target.checked) {
-      setInviteIds([...inviteIds, nonAttendees[i].userId])
-    } else {
-      const newInviteIds = inviteIds
-      newInviteIds.splice(newInviteIds.indexOf(nonAttendees[i].userId), 1)
-      setInviteIds(newInviteIds)
-    }}
 
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: 48 * 4.5 + 8,
-        width: 250,
-      },
-    },
-  };
   useEffect(() => {
     const trip = get(`/trip?tripId=${tripId}`)
     .then(res => {
@@ -56,41 +84,71 @@ function Trip() {
     Promise.all([trip, users]).then((res) => {
       const trip = res[0]
       const users = res[1]
-      setNonAttendees(users.filter(user => !trip.attendees.map(x => x.userId).includes(user.userId)))
+      setNonAttendees(users
+        .filter(user => !trip.attendees.map(x => x.userId).includes(user.userId))
+        .map(user => {return {...user, invited:false}}))
     })
   }, [])
 
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(typeof value === 'string' ? value.split(',') : value,
-    );
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
+  const InviteButton = (<><Button
+    id="demo-customized-button"
+    aria-controls={open ? 'demo-customized-menu' : undefined}
+    aria-haspopup="true"
+    aria-expanded={open ? 'true' : undefined}
+    variant="contained"
+    disableElevation
+    onClick={handleClick}
+    endIcon={<KeyboardArrowDownIcon />}
+    >
+      Invite
+    </Button>
+    <StyledMenu
+      id="demo-customized-menu"
+      MenuListProps={{
+        'aria-labelledby': 'demo-customized-button',
+      }}
+      anchorEl={anchorEl}
+      open={open}
+      onClose={handleClose}
+    >
+      {nonAttendees.map(x => 
+      (<MenuItem onClick={() => handleInvite(x)} disableRipple>
+        <Box sx={{display:'flex', justifyContent:'space-between', width:'100%'}}>
+        {x.nameFirst}
+        <IconButton  size="small" >
+          {x.invited ? <CheckCircleIcon /> : <SendIcon /> }
+        </IconButton>
+        </Box>
+      </MenuItem>
+      )
+    )}
+    </StyledMenu></>)
+
+
+  
+  
   return (
     <>
-    <InputLabel id="multiple-checkbox">Select People</InputLabel>
-    <Select
-      labelId="multiple-checkbox"
-      id="demo-multiple-checkbox"
-      multiple
-      fullWidth
-      value={personName}
-      onChange={handleChange}
-      input={<OutlinedInput label="Tag" />}
-      renderValue={(selected) => selected.join(', ')}
-      MenuProps={MenuProps}
-    >
-      {nonAttendees.map((attendee,i) => (
-      <MenuItem key={i} value={attendee.nameFirst}  >
-        <Checkbox checked={personName.indexOf(attendee.nameFirst) > -1}
-        onChange={(e) => handleCheck(e, i)}
-         />
-        <ListItemText primary={attendee.nameFirst} />
-      </MenuItem>))}
-    </Select>
-    <Button onClick={handleClick}>Invite!</Button>
+      <Box sx= {{margin:'30px 60px'}}>
+      <Box>
+        <Typography sx={{fontFamily:'Playfair Display', fontSize:'50px', textDecoration:'underline', textDecorationThickness:'2px', textUnderlineOffset:'3px', fontColor:'black'}} variant='h2'>{trip.name}</Typography>
+        <Box sx= {{ display:'flex'}}>
+        {InviteButton}
+        </Box>
+      </Box>
+      <Box sx={{display:'flex', justifyContent:'space-between', margin:'auto'}}>
+        <Tinder />
+      </Box>
+      </Box>
     </>
   )
 }
