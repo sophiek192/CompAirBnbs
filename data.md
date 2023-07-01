@@ -2,7 +2,7 @@ let dataStore = {
     users: [
         {
             uId: 0,
-            passord: 'asdfghjkl'
+            passord: 'asdfghjk l'
             nameFirst: "Harry",
             nameLast: "Jon",
             email: "harry@gmail.com",
@@ -24,6 +24,7 @@ let dataStore = {
             bnbs: [
                 {
                     name: "Seaside Vacation",
+                    bnbId: 1,
                     cost: 53.33,
                     wifi: true,
                     securityCamera: false,
