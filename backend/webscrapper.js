@@ -14,18 +14,42 @@ async function getBnbInfo(/*links bnbLinks[]*/) {
 
         const rawName = response.data.match(/<meta property="og:description" content=[^\/]*\/>/);
         const name = rawName[0].replace('<meta property="og:description" content="', "").replace('"/>', "");
-        const result = response.data.match(/<meta property="og:title" content=[^\/]*\/>/);
+        const rawRoomInfo = response.data.match(/<meta property="og:title" content=[^\/]*\/>/);
         const amenities = response.data.match(/{"niobeMinimalClientData"[^<]*/);
+        //const cost = response.data.match();
+        const starRating = rawRoomInfo[0].replace(/[^0-9]*/, "").replace(/\s.*/, "");
+        const bedrooms = rawRoomInfo[0].match(/[0-9]+ bedrooms?/)[0].replace(/\s[^0-9]*/, "");;
+        const beds = rawRoomInfo[0].match(/[0-9]+ beds?/)[0].replace(/\s[^0-9]*/, "");;
+        const bathrooms = rawRoomInfo[0].match(/[0-9]+ baths?/)[0].replace(/\s[^0-9]*/, "");
+        //const rooms = rawRoomInfo[0].match(/\s[0-9][a-zA-Z]*(\s|")/g);
+        console.log(beds);
         //const amenities = rawAmenities.replace("", "")
 
         const data = JSON.parse(amenities);
+        
         const img = data.niobeMinimalClientData[0][1].data.presentation.stayProductDetailPage.sections.metadata.seoFeatures.relImageSrc;
         console.log(data.niobeMinimalClientData[0][1].data.presentation.stayProductDetailPage.sections.metadata.seoFeatures.relImageSrc);
+        //console.log(data.niobeMinimalClientData[0][1].data.presentation.stayProductDetailPage.sections);
           
         console.log(name);
-        console.log(result[0]);
+        //console.log(result[0]);
         console.log(img);
         //console.log(amenities[0]);
+       // Internet and office
+        
+        const bnb = {
+            name: name,
+            // totalCost: ,
+            // costpp: ,
+            starRating: starRating,
+            wifi: true,
+            images: img,
+            bedrooms: parseInt(bedrooms),
+            beds: parseInt(beds),
+            bathrooms: parseInt(bathrooms),
+        }
+        console.log(bnb);
+        return bnb;
 
     } catch (error) {
         console.error(error);
