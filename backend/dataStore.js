@@ -8,7 +8,7 @@ let dataStore = {
 
 // reads from dataStore file
 const save = () => {
-    const jsonstr = JSON.stringify(data);
+    const jsonstr = JSON.stringify(dataStore);
     fs.writeFileSync('./database.json', jsonstr);
   };
   
@@ -16,9 +16,9 @@ const save = () => {
 function getData() {
     return dataStore;
 }
-  
-function setData(dataStore) {
-    data = dataStore;
+   
+function setData(newData) {
+    dataStore = newData;
     save();
   }
 
