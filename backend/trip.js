@@ -42,6 +42,10 @@ export function createTrip (userId, firstName, lastName, numPeople, airbnbLinks,
 
 export function tripsList(userId) {
     let returnArray = [];
+    if (userId == '') {
+        throw HTTPError(400, 'User is not valid')
+    }
+    
     const data = getData();
     for (trips of data.trips) {
         if (trips.airbnbLinks.userId === userId) {
@@ -59,6 +63,6 @@ export function tripsList(userId) {
 
 export function tripDetails(tripId) {
     if (tripId == '') {
-        
+        throw HTTPError(400, 'Trip is not valid');
     }
 }
