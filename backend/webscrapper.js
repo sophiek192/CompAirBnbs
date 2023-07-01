@@ -1,18 +1,10 @@
 import axios from 'axios';
 import fs from 'fs';
-// axios
-// 	.get('https://www.airbnb.com.au/?c=.pi0.pk145025231_9003698711&ghost=true&gclid=CjwKCAjw-vmkBhBMEiwAlrMeFyCMLre-N51Nj31-rK1CThjY8GKqjZih3FVhxJaE28-0q4jdRs9TMBoCeogQAvD_BwE')
-// 	.then((response) => {
-// 		console.log(response.data)
-// 	})
-// 	.catch((error) => {
-// 		console.error(error)
-// 	});
 
-async function getBnbInfo() {
+async function getBnbInfo(/*links bnbLinks[]*/) {
     try {
         const response = await axios.get(
-            'https://www.airbnb.com.au/rooms/41508496?adults=1&category_tag=Tag%3A8186&children=0&enable_m3_private_room=true&infants=0&pets=0&search_mode=flex_destinations_search&check_in=2023-08-06&check_out=2023-08-11&source_impression_id=p3_1688197340_ZTpeKseMs7wUmaPX&previous_page_section_name=1000&federated_search_id=a2f26ee7-c80f-46c7-94a2-090403130658E'
+            'https://www.airbnb.com.au/rooms/40900197?adults=1&category_tag=Tag%3A8186&children=0&enable_m3_private_room=true&infants=0&pets=0&search_mode=flex_destinations_search&check_in=2023-07-24&check_out=2023-07-29&source_impression_id=p3_1688208910_4XEneGtR6Etd5XQc&previous_page_section_name=1000&federated_search_id=0a68c266-4b11-4ce0-8ef5-e66fef1a3faa'
         );
         // console.log(response.data);
 
@@ -23,12 +15,13 @@ async function getBnbInfo() {
         const rawName = response.data.match(/<meta property="og:description" content=[^\/]*\/>/);
         const name = rawName[0].replace('<meta property="og:description" content="', "").replace('"/>', "");
         const result = response.data.match(/<meta property="og:title" content=[^\/]*\/>/);
-        const img = response.data.match(/<meta property="og:image"[\n\s]*content=[^\/]*\/>/);
         const amenities = response.data.match(/{"niobeMinimalClientData"[^<]*/);
+        //const amenities = rawAmenities.replace("", "")
 
-        fs.writeFile('amenities.json', amenities[0], (err) => {
-            if (err) throw err;
-        });
+        const data = JSON.parse(amenities);
+        const img = data.niobeMinimalClientData[0][1].data.presentation.stayProductDetailPage.sections.metadata.seoFeatures.relImageSrc;
+        console.log(data.niobeMinimalClientData[0][1].data.presentation.stayProductDetailPage.sections.metadata.seoFeatures.relImageSrc);
+          
         console.log(name);
         console.log(result[0]);
         console.log(img);
