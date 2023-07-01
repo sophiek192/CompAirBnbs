@@ -5,16 +5,6 @@ import HTTPError from 'http-errors';
 
 export function authRegister(email, password, nameFirst, nameLast) {
     const data = getData();
-    //  const errorCheck = isRegisterValid(email)
-
-
-    //Check that the email hasen't already been created
-    for (const currUser of data.members) {
-        if (currUser.email === email) {
-            console.log('email entered already exists!');
-            throw HTTPError(400, 'email entered already exists!');
-        }
-    }
 
 
     const errorCheck = isRegisterValid(email, password, nameFirst, nameLast);
@@ -22,10 +12,15 @@ export function authRegister(email, password, nameFirst, nameLast) {
         console.log(errorCheck.error);
         throw HTTPError(400, errorCheck.error);
     }
+    // Testing unique email
+    for (const user of data.users) {
+        if (user.email === email) {
+        throw HTTPError(400, 'This email has already been registered');
+        }
 
+    }
 
     const id = data.users.length + 1;
-
     const newMember = {
         userId: id,
         pasword,
@@ -47,6 +42,18 @@ export function authRegister(email, password, nameFirst, nameLast) {
 export function authLogin(email) {
     const data = getData();
 
+    // Error: Invalid email
+    if (!data.users.some(x => x.email === email) || email === '') {
+        throw HTTPError(400, 'Invalid Email');
+    }
+    // Retrieve user information
+    const user = data.users.find(x => x.email === email);
+
+    // Error: Invalid password
+    if (user.password !== password) {
+        throw HTTPError(400, 'Invalid Password');
+    }
+
     for (const currUser of data.users) {
         if (currUser.email === email && currUser.password == password) {
             return {
@@ -54,12 +61,11 @@ export function authLogin(email) {
             };
         }
     }
-    
     throw HTTPError(400, 'Invalid email or password!');
 }
 
 
-function isRegisterValid(email, password) {
+function isRegisterValid(email, password, nameFirst, nameLast) {
     const errorCheck = {
       isError: false,
       error: ''
@@ -81,4 +87,5 @@ function isRegisterValid(email, password) {
   
     return errorCheck;
   }
-  
+}
+
