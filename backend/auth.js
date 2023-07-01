@@ -1,6 +1,7 @@
 import validator from 'validator';
 import { getData, setData } from './dataStore.js';
 //import * as config from './config.json';
+import HTTPError from 'http-errors';
 
 export function authRegister(email, password, nameFirst, nameLast) {
     const data = getData();
