@@ -1,4 +1,4 @@
-import { getData, setData } from './dataStore';
+import { getData, setData } from './dataStore.js';
 
 
 export function createTrip (userId, firstName, lastName, numPeople, airBnbLinks, date, location) {
