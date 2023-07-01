@@ -8,7 +8,7 @@ export function createTrip(name, userId, numPeople, airBnbLinks, date, location)
 
     const newTrip = {
         name: name,
-        tripId: id,
+        tripId: String(id),
         numPpl: numPeople,
         date: date,
         organisers: [userId],
@@ -36,7 +36,7 @@ export function tripsList(userId) {
 
     const data = getData();
     for (let trip of data.trips) {
-        if (trip.attendees.map(attendee => parseInt(attendee.userId)).includes(userId)) {
+        if (trip.attendees.map(attendee => attendee.userId).includes(userId)) {
             returnArray.push({
                 name: trip.name,
                 tripId: trip.tripId,
@@ -57,7 +57,7 @@ export function tripDetails(tripId) {
         throw HTTPError(400, 'Trip is not valid');
     }
     const data = getData();
-    const trip = data.users.findIndex(x => x.tripId === tripId);
+    const trip = data.trips.find(x => x.tripId === tripId);
     return {trip: trip};
 }
 
@@ -67,7 +67,7 @@ export function inviteToTrip(userId, tripId) {
     }
     const data = getData();
     const user = data.users.find(x => x.userId === userId);
-    const trip = data.users.find(x => x.tripId === tripId);
+    const trip = data.trips.find(x => x.tripId === tripId);
 
     // user already in trip
     if (user.attending.includes(tripId)) {

@@ -56,18 +56,18 @@ app.post('/trip/create', (req, res) => {
 })
 
 app.post('/trip/invite', (req, res) => {
-  const { otherId, tripId } = req.body;
-  res.json(inviteToTrip(otherId, tripId));
+  const { userId, tripId } = req.body;
+  res.json(inviteToTrip(userId, tripId));
 })
 
 app.get('/trips', (req, res) => {
     const userId = String(req.query.userId);
-    res.json(tripsList(parseInt(userId)));
+    res.json(tripsList(userId));
 })
 
 app.get('/trip', (req, res) => {
   const tripId = String(req.query.tripId);
-  res.json(tripDetails(parseInt(tripId)));
+  res.json(tripDetails(tripId));
 })
 
 app.get('/users', (req, res) => {

@@ -22,7 +22,7 @@ export function authRegister(email, password, nameFirst, nameLast) {
 
     const id = data.users.length + 1;
     const newMember = {
-        userId: id,
+        userId: String(id),
         password: password,
         nameFirst: nameFirst,
         nameLast: nameLast,
