@@ -1,5 +1,5 @@
 import validator from 'validator';
-import { getData, setData } from '../dataStore.js';
+import { getData, setData } from './dataStore.js';
 //import * as config from './config.json';
 
 export function authRegister(email, password, nameFirst, nameLast) {
@@ -10,16 +10,16 @@ export function authRegister(email, password, nameFirst, nameLast) {
     //Check that the email hasen't already been created
     for (const currUser of data.members) {
         if (currUser.email === email) {
-       // throw HTTPError(400, 'email entered already exists!');
             console.log('email entered already exists!');
+            throw HTTPError(400, 'email entered already exists!');
         }
     }
 
 
     const errorCheck = isRegisterValid(email, password, nameFirst, nameLast);
     if (errorCheck.isError) {
-       // throw HTTPError(400, errorCheck.error);
-       console.log(errorcheck.error);
+        console.log(errorCheck.error);
+        throw HTTPError(400, errorCheck.error);
     }
 
 
@@ -54,7 +54,7 @@ export function authLogin(email) {
         }
     }
     
-  //  throw HTTPError(400, 'Invalid email or password!');
+    throw HTTPError(400, 'Invalid email or password!');
 }
 
 
@@ -70,12 +70,12 @@ function isRegisterValid(email, password) {
     } else if (password.length < 6) {
         errorCheck.isError = true;
         errorCheck.error = 'password too short!';
-    } else if (nameFirst.length < 1 || nameFirst.length > 50) {
+    } else if (nameFirst.length < 1) {
         errorCheck.isError = true;
-        errorCheck.error = 'invalid name length!';
-    } else if (nameLast.length < 1 || nameLast.length > 50) {
+        errorCheck.error = 'invalid first name length!';
+    } else if (nameLast.length < 1) {
         errorCheck.isError = true;
-        errorCheck.error = 'invalid name length!';
+        errorCheck.error = 'invalid last name length!';
     }
   
     return errorCheck;

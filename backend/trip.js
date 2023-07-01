@@ -1,7 +1,7 @@
 import { getData, setData } from './dataStore';
 
 
-export function createTrip (userId, firstName, lastName, numPeople, airbnbLinks, date, location) {
+export function createTrip (userId, firstName, lastName, numPeople, airBnbLinks, date, location) {
     const data = getData();
     const id = data.trips.length + 1;
 
@@ -18,7 +18,7 @@ export function createTrip (userId, firstName, lastName, numPeople, airbnbLinks,
             userId,
             firstName,
             lastName }],
-        airBnbLnks: [],
+        airBnbLinks,
         location,
         bnbs: [],
     }
