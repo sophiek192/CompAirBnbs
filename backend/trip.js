@@ -45,7 +45,7 @@ export function tripsList(userId) {
     if (userId == '') {
         throw HTTPError(400, 'User is not valid')
     }
-    
+
     const data = getData();
     for (trips of data.trips) {
         if (trips.airbnbLinks.userId === userId) {
@@ -65,4 +65,10 @@ export function tripDetails(tripId) {
     if (tripId == '') {
         throw HTTPError(400, 'Trip is not valid');
     }
+    
+    const index = data.users.findIndex(x => x.tripId === tripId);
+    const tripIdIndex = data.users[index].sessions.indexOf(tripId);
+    data.users[index].sessions.splice(tripIdIndex, 1);    
+    setData(data);
+    return {};
 }
