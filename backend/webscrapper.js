@@ -1,9 +1,10 @@
 import axios from 'axios';
 import fs from 'fs';
 
-async function getBnbInfo(/*links bnbLinks[]*/) {
+async function getBnbInfo(/*airbnbLink*/) {
     try {
         const response = await axios.get(
+            //airbnbLink
             'https://www.airbnb.com.au/rooms/40900197?adults=1&category_tag=Tag%3A8186&children=0&enable_m3_private_room=true&infants=0&pets=0&search_mode=flex_destinations_search&check_in=2023-07-24&check_out=2023-07-29&source_impression_id=p3_1688208910_4XEneGtR6Etd5XQc&previous_page_section_name=1000&federated_search_id=0a68c266-4b11-4ce0-8ef5-e66fef1a3faa'
         );
         // console.log(response.data);
