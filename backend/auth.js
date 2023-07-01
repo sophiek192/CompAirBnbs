@@ -22,7 +22,7 @@ export function authRegister(email, password, nameFirst, nameLast) {
 
     const id = data.users.length + 1;
     const newMember = {
-        userId: id,
+        userId: String(id),
         password: password,
         nameFirst: nameFirst,
         nameLast: nameLast,
@@ -39,7 +39,7 @@ export function authRegister(email, password, nameFirst, nameLast) {
     };
 }
 
-export function authLogin(email) {
+export function authLogin(email, password) {
     const data = getData();
 
     // Error: Invalid email
@@ -53,11 +53,10 @@ export function authLogin(email) {
     if (user.password !== password) {
         throw HTTPError(400, 'Invalid Password');
     }
-
     for (const currUser of data.users) {
         if (currUser.email === email && currUser.password == password) {
             return {
-                userId: currUser.uId,
+                userId: currUser.userId,
             };
         }
     }

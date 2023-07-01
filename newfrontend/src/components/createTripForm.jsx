@@ -12,23 +12,30 @@ function CreateTripForm() {
   const [endDate, setEndDate] = useState(null)
   const [location, setLocation] = useState('')
   const [link, setLink] = useState('')
+  const [name, setName] = useState('')
   const [links, setLinks] = useState([])
 
   const createTripFormStyle = {
     height:"500px", width:"800px", background: 'rgba(256,256,256,0.7)',
-    border:"1px grey", borderRadius:"20px", marginTop:"100px",
+    border:"1px grey", borderRadius:"20px", 
     display:'flex',
     flexDirection:'column',
-    justifyContent:'space-between'
+    justifyContent:'space-between',
+    overflowY:'scroll'
   }
   const handleSubmit = () => {
-    // post('/trip/create', {
-    //   numPeople: numPeople,
-    //   location: location,
-    //   links: links,
-    //   date: [startDate, endDate]
-    // })
-    window.open("/","_self")
+    post('/trip/create', {
+      name: name,
+      userId: localStorage.getItem('userId'),
+      numPeople: numPeople,
+      location: location,
+      links: links,
+      date: [startDate, endDate]
+    })
+    .then(() => {
+      window.open("/","_self")
+    })
+    
   }
 
   const handleAddLink = () => {
@@ -43,10 +50,17 @@ function CreateTripForm() {
   return (
     <>
       <Box sx={createTripFormStyle}>
-        <Container sx={{width: '80%', display:'flex', flexDirection:'column',justifyContent:'space-between', height:'60%'}}>
-          <Typography sx={{margin: '0', fontSize:'25px'}} className="Title" variant='p'>Create a new Trip!</Typography>
+        <Container sx={{width: '80%', display:'flex', flexDirection:'column',justifyContent:'space-between'}}>
+          <Typography sx={{margin: '20px', fontSize:'25px'}} className="Title" variant='p'>Create a new Trip!</Typography>
           <TextField
-            sx={{margin: '0 auto', fontSize:'25px'}}
+            sx={{margin: '10px auto', fontSize:'25px'}}
+            required fullWidth
+            label="Name of Trip"
+            onChange={(e) => {setName(e.target.value)}}
+            margin="dense"
+          />
+          <TextField
+            sx={{margin: '10px auto', fontSize:'25px'}}
             required fullWidth
             label="Expected No. People"
             onChange={(e) => {setNumPeople(e.target.value)}}
@@ -54,16 +68,17 @@ function CreateTripForm() {
             type="number"
           />
           <TextField 
-            sx={{margin: '0 auto', fontSize:'25px'}}
+            sx={{margin: '10px auto', fontSize:'25px'}}
             required fullWidth    
             label="Location" 
             onChange={(e) => {setLocation(e.target.value)}} 
             margin="dense"
           />
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <Stack spacing={3}>
-              <Box sx = {{display: 'flex'}}>
+            <Stack spacing={3} sx={{margin: '10px auto', fontSize:'25px', width:'100%'}}>
+              <Box sx = {{display: 'flex', justifyContent:'space-between'}}>
                 <MobileDatePicker
+                  fullWidth
                   label="Start Date"
                   inputFormat="DD/MM/YYYY"
                   value={startDate}
@@ -74,6 +89,7 @@ function CreateTripForm() {
                 />
                 <Typography sx = {{m: 2}}> to </Typography>
                 <MobileDatePicker
+                  fullWidth
                   label="End Date"
                   inputFormat="DD/MM/YYYY"
                   value={endDate}
@@ -85,7 +101,7 @@ function CreateTripForm() {
               </Box>
               </Stack>
           </LocalizationProvider>
-          <Box sx={{display:'flex'}}>
+          <Box sx={{display:'flex', margin: '10px auto', fontSize:'25px', width:'100%'}}>
             <TextField 
               sx={{margin: '0 auto', fontSize:'25px'}}
               required fullWidth

@@ -15,12 +15,6 @@ function RegisterCard() {
   }
 
   const handleSubmit = () => {
-    console.log({
-      email: email,
-      password: password,
-      nameFirst: name,
-      nameLast: name
-    })
     post('/auth/register', {
       email: email,
       password: password,
@@ -30,8 +24,8 @@ function RegisterCard() {
     .then((res) => {
       localStorage.setItem("userId", res.userId);
       window.open("/trips","_self")
-    
     })
+    .catch((err) => alert('Try Again!'))
   }
 
 
