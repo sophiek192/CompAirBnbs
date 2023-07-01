@@ -1,7 +1,7 @@
 import axios from 'axios';
 import fs from 'fs';
 
-async function getBnbInfo(airbnbLink) {
+export async function getBnbInfo(airbnbLink) {
     try {
         const response = await axios.get(
             airbnbLink
@@ -19,19 +19,22 @@ async function getBnbInfo(airbnbLink) {
         const amenities = response.data.match(/{"niobeMinimalClientData"[^<]*/);
         //const cost = response.data.match();
         const starRating = rawRoomInfo[0].replace(/[^0-9]*/, "").replace(/\s.*/, "");
-        const bedrooms = rawRoomInfo[0].match(/[0-9]+ bedrooms?/)[0].replace(/\s[^0-9]*/, "");
+
+        const bedrooms = rawRoomInfo[0].match(/[0-9]+ bedrooms?/);
+        bedrooms !== null ? bedrooms[0].replace(/\s[^0-9]*/, "") : bedrooms = 0;
         const beds = rawRoomInfo[0].match(/[0-9]+ beds?/)[0].replace(/\s[^0-9]*/, "");
+        beds !== null ? bedrooms[0].replace(/\s[^0-9]*/, "") : beds = 0;
         const bathrooms = rawRoomInfo[0].match(/[0-9]+ baths?/)[0].replace(/\s[^0-9]*/, "");
+        bathrooms !== null ? bathrooms[0].replace(/\s[^0-9]*/, "") : bathrooms = 0;
         //const rooms = rawRoomInfo[0].match(/\s[0-9][a-zA-Z]*(\s|")/g);
-        console.log(bedrooms);
-        //const amenities = rawAmenities.replace("", "")
-        //string1.localeCompare(string2)
+        //console.log(bedrooms);
 
         const data = JSON.parse(amenities);
-        
+        //const wifi = amenities[0].match(/"title": "Wi-Fi.*/);
+        //console.log(wifi);
         const img = data.niobeMinimalClientData[0][1].data.presentation.stayProductDetailPage.sections.metadata.seoFeatures.relImageSrc;
         console.log(data.niobeMinimalClientData[0][1].data.presentation.stayProductDetailPage.sections.metadata.seoFeatures.relImageSrc);
-        //console.log(data.niobeMinimalClientData[0][1].data.presentation.stayProductDetailPage.sections);
+        //console.log(data.niobeMinimalClientData[0][1].data.presentation.stayProductDetailPage.sections.sections.find(sectionId = ).seeAllAmenitiesGroups.find(title.localCompare("Internet and office") === 0)));
           
         console.log(name);
         //console.log(result[0]);
@@ -50,7 +53,7 @@ async function getBnbInfo(airbnbLink) {
             beds: parseInt(beds),
             bathrooms: parseInt(bathrooms),
         }
-        console.log(bnb);
+        //console.log(bnb);
         return bnb;
 
     } catch (error) {
