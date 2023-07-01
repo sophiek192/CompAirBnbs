@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useRef } from 'react'
 import BnbCard from "../components/BnbCard";
-import { Container ,Box} from "@mui/material"
+import { Container ,Box, IconButton, Button} from "@mui/material"
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import TinderCard from 'react-tinder-card'
 
 function Tinder() {
@@ -23,7 +25,6 @@ function Tinder() {
       }
   ];
   const [currentIndex, setCurrentIndex] = useState(cards.length - 1)
-  const [lastDirection, setLastDirection] = useState()
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex)
 
@@ -40,13 +41,11 @@ function Tinder() {
     currentIndexRef.current = val
   }
 
-  const canGoBack = currentIndex < cards.length - 1
 
   const canSwipe = currentIndex >= 0
 
   // set last direction and decrease current index
   const swiped = (direction, nameToDelete, index) => {
-    setLastDirection(direction)
     updateCurrentIndex(index - 1)
   }
 
@@ -65,25 +64,10 @@ function Tinder() {
     }
   }
 
-  // increase current index and show card
-  const goBack = async () => {
-    if (!canGoBack) return
-    const newIndex = currentIndex + 1
-    updateCurrentIndex(newIndex)
-    await childRefs[newIndex].current.restoreCard()
-  }
 
   return (
-    <div>
-      <link
-        href='https://fonts.googleapis.com/css?family=Damion&display=swap'
-        rel='stylesheet'
-      />
-      <link
-        href='https://fonts.googleapis.com/css?family=Alatsi&display=swap'
-        rel='stylesheet'
-      />
-      <h1>React Tinder Card</h1>
+    <div style={{backgroundColor:'blue', width:'100%', height:'100%'}}>
+      <Box sx={{ margin:'auto', width:'100%', height:'100%'}}>
       <div className='cardContainer'>
         {cards.map((card, index) => (
           <TinderCard
@@ -102,21 +86,17 @@ function Tinder() {
           </TinderCard>
         ))}
       </div>
-      <div className='buttons'>
-        <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('left')}>Swipe left!</button>
-        <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => goBack()}>Undo swipe!</button>
-        <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('right')}>Swipe right!</button>
-      </div>
-      {lastDirection ? (
-        <h2 key={lastDirection} className='infoText'>
-          You swiped {lastDirection}
-        </h2>
-      ) : (
-        <h2 className='infoText'>
-          Swipe a card or press a button to get Restore Card button visible!
-        </h2>
-      )}
+      <Box sx={{display:'flex', justifyContent:'space-between', width:'350px', margin:'40px auto 0px auto'}}>
+        <Button variant="outlined" startIcon={<ArrowLeftIcon />} color="success" onClick={() => swipe('left')}>
+          Swipe Left
+        </Button>
+        <Button variant="outlined" endIcon={<ArrowRightIcon />} color="error" onClick={() => swipe('right')}>
+        Swipe Right
+        </Button>
+      </Box>
+      </Box>
     </div>
   );
 }
+
 export default Tinder;

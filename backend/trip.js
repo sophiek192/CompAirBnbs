@@ -70,10 +70,10 @@ export function inviteToTrip(userId, tripId) {
     const trip = data.trips.find(x => x.tripId === tripId);
 
     // user already in trip
+    console.log(user, trip)
     if (user.attending.includes(tripId)) {
-      return;
+      return { message: 'success' };
     }
-
     user.attending.push(tripId)
     trip.attendees.push({
         "userId": userId,
@@ -81,5 +81,5 @@ export function inviteToTrip(userId, tripId) {
     })
   
     setData(data);
-    return {};
+    return {message: 'success'};
 }
