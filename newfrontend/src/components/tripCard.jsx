@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {Card, Grid, CardActions, CardMedia, CardContent, Box, Button,  Container, Link, TextField, Typography } from "@mui/material"
-import { Frame, useMotionValue, useTransform, useAnimation } from "framer";
 
 function TripCard() {
   return (
