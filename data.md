@@ -2,6 +2,7 @@ let dataStore = {
     users: [
         {
             uId: 0,
+            passord: 'asdfghjkl'
             nameFirst: "Harry",
             nameLast: "Jon",
             email: "harry@gmail.com",
