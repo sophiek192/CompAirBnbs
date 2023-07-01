@@ -44,13 +44,13 @@ app.post('/auth/login', (req, res) => {
 })
 
 app.post('/auth/register', (req, res) => {
-    const { email, password, nameFirst, nameLast} = res.body;
+    const { email, password, nameFirst, nameLast} = req.body;
     res.json(authRegister(email, password, nameFirst, nameLast));
 })
 
 
 app.post('/create/trip', (req, res) => {
-    const { userId, numPeople, airBnbLinks, date, location } = res.body;
+    const { userId, numPeople, airBnbLinks, date, location } = req.body;
     res.json(createTrip(userId, numPeople, airBnbLinks, date, location));
 })
 
