@@ -8,28 +8,6 @@
             "email": "f@email.com",
             "organiser": [],
             "attending": []
-        },
-        {
-            "userId": "2",
-            "password": "felixcao",
-            "nameFirst": "a",
-            "nameLast": "a",
-            "email": "a@email.com",
-            "organiser": [],
-            "attending": [
-                "1"
-            ]
-        },
-        {
-            "userId": "3",
-            "password": "felixcao",
-            "nameFirst": "b",
-            "nameLast": "b",
-            "email": "b@email.com",
-            "organiser": [],
-            "attending": [
-                "1"
-            ]
         }
     ],
     "trips": [
