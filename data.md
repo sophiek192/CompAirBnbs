@@ -9,13 +9,17 @@ let dataStore = {
             attending: [0, 4, 5]
         }
     ],
-    trip: [
+    trips: [
         {
             tripId: 0,
             numPpl: 6,
             date: [startDate, endDate],
-            organisers: [3],
+            organisers: [{
+                userId: 1,        firstName: John
+                lastName: Smith}],
             attendees: [3, 5, 6],
+            airBnbLinks: [],
+            location: Kiama,
             bnbs: [
                 {
                     name: "Seaside Vacation",
