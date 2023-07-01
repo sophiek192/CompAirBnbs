@@ -2,7 +2,7 @@ import fs from 'fs';
 
 let dataStore = {
     users: [],
-    trip: [],
+    trips: [],
 }
 
 
