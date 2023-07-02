@@ -12,10 +12,7 @@ export function createTrip(name, userId, numPeople, airBnbLinks, date, location)
         numPpl: numPeople,
         date: date,
         organisers: [userId],
-        attendees: [{
-            userId,
-            notifications:[]
-          }],
+        attendees: [userId],
         airBnbLinks,
         location,
         bnbs: [],
@@ -36,7 +33,7 @@ export function tripsList(userId) {
 
     const data = getData();
     for (let trip of data.trips) {
-        if (trip.attendees.map(attendee => attendee.userId).includes(userId)) {
+        if (trip.attendees.includes(userId)) {
             returnArray.push({
                 name: trip.name,
                 tripId: trip.tripId,
@@ -46,7 +43,6 @@ export function tripsList(userId) {
             });
         }
     }
-    console.log(returnArray)
     return { 
         trips: returnArray
     }
@@ -75,10 +71,7 @@ export function inviteToTrip(userId, tripId) {
       return { message: 'success' };
     }
     user.attending.push(tripId)
-    trip.attendees.push({
-        "userId": userId,
-        "notifications": trip.bnbs
-    })
+    trip.attendees.push(userId)
   
     setData(data);
     return {message: 'success'};

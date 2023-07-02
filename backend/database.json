@@ -8,6 +8,48 @@
             "email": "f@email.com",
             "organiser": [],
             "attending": []
+        },
+        {
+            "userId": "2",
+            "password": "felixcao",
+            "nameFirst": "elizabeth",
+            "nameLast": "elizabeth",
+            "email": "e@email.com",
+            "organiser": [],
+            "attending": [
+                "1"
+            ]
+        },
+        {
+            "userId": "3",
+            "password": "felixcao",
+            "nameFirst": "aarav",
+            "nameLast": "rego",
+            "email": "a@email.com",
+            "organiser": [],
+            "attending": [
+                "1"
+            ]
+        },
+        {
+            "userId": "4",
+            "password": "felixcao",
+            "nameFirst": "anish",
+            "nameLast": "sanghbi",
+            "email": "an@email.com",
+            "organiser": [],
+            "attending": [
+                "1"
+            ]
+        },
+        {
+            "userId": "5",
+            "password": "sophie",
+            "nameFirst": "sophie",
+            "nameLast": "khov",
+            "email": "s@email.com",
+            "organiser": [],
+            "attending": []
         }
     ],
     "trips": [
@@ -23,13 +65,68 @@
                 "1"
             ],
             "attendees": [
-                {
-                    "userId": "1",
-                    "notifications": []
-                }
+                "1",
+                "2",
+                "3",
+                "4"
             ],
             "location": "london",
-            "bnbs": []
+            "bnbs": [
+                {
+                    "name": "Seaside Vacation",
+                    "cost": 53.33,
+                    "wifi": true,
+                    "securityCamera": false,
+                    "partyPolicy": "We have a strict no party policy",
+                    "pictures": [],
+                    "bedrooms": 5,
+                    "beds": 7,
+                    "bathrooms": 5,
+                    "leftSwipe": [
+                        "1"
+                    ],
+                    "rightSwipe": []
+                },
+                {
+                    "name": "Treeside Vacation",
+                    "cost": 50,
+                    "wifi": true,
+                    "securityCamera": false,
+                    "partyPolicy": "We have a strict no party policy",
+                    "pictures": [],
+                    "bedrooms": 5,
+                    "beds": 7,
+                    "bathrooms": 5,
+                    "leftSwipe": [],
+                    "rightSwipe": []
+                },
+                {
+                    "name": "Fireside Vacation",
+                    "cost": 2,
+                    "wifi": false,
+                    "securityCamera": true,
+                    "partyPolicy": "We have a strict PARTAY policy",
+                    "pictures": [],
+                    "bedrooms": 5,
+                    "beds": 7,
+                    "bathrooms": 5,
+                    "leftSwipe": [],
+                    "rightSwipe": []
+                },
+                {
+                  "name": "Rightside Vacation",
+                  "cost": 2,
+                  "wifi": false,
+                  "securityCamera": true,
+                  "partyPolicy": "We have a strict kflmnewfnwlqkefwnq policy",
+                  "pictures": [],
+                  "bedrooms": 5,
+                  "beds": 7,
+                  "bathrooms": 5,
+                  "leftSwipe": [],
+                  "rightSwipe": []
+              }
+            ]
         }
     ]
 }

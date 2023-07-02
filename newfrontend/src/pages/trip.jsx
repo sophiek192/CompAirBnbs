@@ -85,7 +85,7 @@ function Trip() {
       const trip = res[0]
       const users = res[1]
       setNonAttendees(users
-        .filter(user => !trip.attendees.map(x => x.userId).includes(user.userId))
+        .filter(user => !trip.attendees.includes(user.userId))
         .map(user => {return {...user, invited:false}}))
     })
   }, [])
