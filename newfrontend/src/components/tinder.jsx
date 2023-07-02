@@ -1,36 +1,20 @@
-import React, { useState, useMemo, useRef } from 'react'
+import React, { useState, useMemo, useEffect, useRef } from 'react'
 import BnbCard from "../components/BnbCard";
+import {get, post} from "../helpers";
 import { Container ,Box, IconButton, Button} from "@mui/material"
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import TinderCard from 'react-tinder-card'
 
-function Tinder() {
-  const cards = [
-      {
-          image: 'https://img.icons8.com/color/452/GeeksforGeeks.png',
-          color: '#55ccff'
-      },
-      {
-          image: 'https://img.icons8.com/color/452/GeeksforGeeks.png',
-          color: '#e8e8e8'
-      },
-      {
-          image: 'https://img.icons8.com/color/452/GeeksforGeeks.png',
-          color: '#0a043c'
-      },
-      {
-          image: 'https://img.icons8.com/color/452/GeeksforGeeks.png',
-          color: 'black'
-      }
-  ];
-  const [currentIndex, setCurrentIndex] = useState(cards.length - 1)
+function Tinder({ tripId }) {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [bnbs, setBnbs] = useState([])
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex)
 
   const childRefs = useMemo(
     () =>
-      Array(cards.length)
+      Array(bnbs.length)
         .fill(0)
         .map((i) => React.createRef()),
     []
@@ -41,11 +25,27 @@ function Tinder() {
     currentIndexRef.current = val
   }
 
+  useEffect(() => {
+    get(`/trip?tripId=${tripId}`).then(res => {
+
+      setBnbs(res.trip.bnbs.filter(bnb => ! (bnb.leftSwipe.includes(userId)|| bnb.rightSwipe.includes(userId))))
+      setCurrentIndex(bnbs.length - 1)
+    })
+  },[])
+
 
   const canSwipe = currentIndex >= 0
 
   // set last direction and decrease current index
   const swiped = (direction, nameToDelete, index) => {
+    console.log(direction);
+    post('/trip/swipe',{
+      userId: localStorage.getItem('userId'), 
+      tripId: tripId, 
+      bnbId: index,
+      direction: direction
+    })
+    .then(res => console.log(res))
     updateCurrentIndex(index - 1)
   }
 
@@ -58,18 +58,25 @@ function Tinder() {
     // during latest swipes. Only the last outOfFrame event should be considered valid
   }
 
-  const swipe = async (dir) => {
-    if (canSwipe && currentIndex < cards.length) {
+  const swipe = async (dir, index) => {
+    post('/trip/swipe',{
+      userId: localStorage.getItem('userId'), 
+      tripId: tripId, 
+      bnbId: index,
+      direction: dir
+    })
+    if (!bnbs || canSwipe && currentIndex < bnbs.length) {
       await childRefs[currentIndex].current.swipe(dir) // Swipe the card!
     }
   }
 
+  const userId = localStorage.getItem('userId')
 
   return (
     <div style={{backgroundColor:'blue', width:'100%', height:'100%'}}>
       <Box sx={{ margin:'auto', width:'100%', height:'100%'}}>
       <div className='cardContainer'>
-        {cards.map((card, index) => (
+        {bnbs.map((bnb, index) => (
           <TinderCard
             ref={childRefs[index]}
             className='swipe'
@@ -78,19 +85,19 @@ function Tinder() {
             onCardLeftScreen={() => outOfFrame(index, index)}
           >
             <div
-              style={{ backgroundImage: 'url(' + card.image + ')' }}
+              // style={{ backgroundImage: 'url(' + card.image + ')' }}
               className='card'
             >
-              <h3>{card.color}</h3>
+              <h3>{bnb.name}</h3>
             </div>
           </TinderCard>
         ))}
       </div>
       <Box sx={{display:'flex', justifyContent:'space-between', width:'350px', margin:'40px auto 0px auto'}}>
-        <Button variant="outlined" startIcon={<ArrowLeftIcon />} color="success" onClick={() => swipe('left')}>
+        <Button variant="outlined" startIcon={<ArrowLeftIcon />} color="success" onClick={() => swipe('left', currentIndex)}>
           Swipe Left
         </Button>
-        <Button variant="outlined" endIcon={<ArrowRightIcon />} color="error" onClick={() => swipe('right')}>
+        <Button variant="outlined" endIcon={<ArrowRightIcon />} color="error" onClick={() => swipe('right', currentIndex)}>
         Swipe Right
         </Button>
       </Box>

@@ -83,7 +83,6 @@
                     "beds": 7,
                     "bathrooms": 5,
                     "leftSwipe": [
-                        "1"
                     ],
                     "rightSwipe": []
                 },
@@ -98,7 +97,8 @@
                     "beds": 7,
                     "bathrooms": 5,
                     "leftSwipe": [],
-                    "rightSwipe": []
+                    "rightSwipe": [
+                    ]
                 },
                 {
                     "name": "Fireside Vacation",
@@ -110,22 +110,24 @@
                     "bedrooms": 5,
                     "beds": 7,
                     "bathrooms": 5,
-                    "leftSwipe": [],
+                    "leftSwipe": [
+                    ],
                     "rightSwipe": []
                 },
                 {
-                  "name": "Rightside Vacation",
-                  "cost": 2,
-                  "wifi": false,
-                  "securityCamera": true,
-                  "partyPolicy": "We have a strict kflmnewfnwlqkefwnq policy",
-                  "pictures": [],
-                  "bedrooms": 5,
-                  "beds": 7,
-                  "bathrooms": 5,
-                  "leftSwipe": [],
-                  "rightSwipe": []
-              }
+                    "name": "Rightside Vacation",
+                    "cost": 2,
+                    "wifi": false,
+                    "securityCamera": true,
+                    "partyPolicy": "We have a strict kflmnewfnwlqkefwnq policy",
+                    "pictures": [],
+                    "bedrooms": 5,
+                    "beds": 7,
+                    "bathrooms": 5,
+                    "leftSwipe": [],
+                    "rightSwipe": [
+                    ]
+                }
             ]
         }
     ]

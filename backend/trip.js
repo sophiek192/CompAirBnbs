@@ -76,3 +76,21 @@ export function inviteToTrip(userId, tripId) {
     setData(data);
     return {message: 'success'};
 }
+
+export function tripSwipe(userId, tripId, bnbId, direction) {
+  const data = getData();
+  const trip = data.trips.find(x => x.tripId === tripId);
+  const bnb = trip.bnbs[bnbId]
+
+  if (bnb.leftSwipe.includes(userId) || bnb.rightSwipe.includes(userId)){
+    return { message: 'success'};
+  }
+  if (direction === 'left') {
+    bnb.leftSwipe.push(userId)
+  } else {
+    bnb.rightSwipe.push(userId)
+  }
+
+  setData(data);
+  return { message: 'success'};
+}

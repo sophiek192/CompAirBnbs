@@ -146,7 +146,7 @@ function Trip() {
         </Box>
       </Box>
       <Box sx={{display:'flex', justifyContent:'space-between', margin:'auto'}}>
-        <Tinder />
+        <Tinder tripId={tripId}/>
       </Box>
       </Box>
     </>
