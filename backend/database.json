@@ -257,6 +257,102 @@
                     ]
                 }
             ]
+        },
+        {
+            "name": "Gold Coast",
+            "tripId": "10",
+            "numPpl": "15",
+            "date": [
+                "2023-07-01T14:00:00.000Z",
+                "2023-07-21T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/23491441?check_out=2023-05-25&adults=6&check_in=2023-05-22&s=42&unique_share_id=E52F77E3-ABCD-47E7-8D03-9DBFB3B6E0E7&_branch_match_id=1174278276857701879&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT0zKS9LLTdUPyM7zdXGOSAqoTAIAmSzOahsAAAA%3D&source_impression_id=p3_1681208092_%2B%2BtUYTDsQGdkBttT&guests=1",
+                "https://www.airbnb.com.au/rooms/33866252?adults=6&check_in=2023-05-22&check_out=2023-05-25&federated_search_id=b6b9f189-c302-4618-bab0-8bc58334d399&source_impression_id=p3_1681394724_%2BVdAWleInWxzc7Cp"
+            ],
+            "location": "Gold Coast",
+            "bnbs": [
+                {
+                    "name": "Luxury stunning Nobby&#x27;s beach home, 2bd + Den!",
+                    "totalCost": 750.33,
+                    "starRating": "4.69",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/103f041b-ce78-4a00-8654-024b7893932d.jpg?im_w=720",
+                    "bedrooms": 3,
+                    "beds": 3,
+                    "bathrooms": 2,
+                    "leftSwipe": [],
+                    "rightSwipe": []
+                },
+                {
+                    "name": "Circle on Cavill 3 Bedroom SPA - Surfers Paradise",
+                    "totalCost": 750.33,
+                    "starRating": "4.91",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/miso/Hosting-33866252/original/bd658d6b-7315-439e-9c37-e1684a7f2b09.jpeg?im_w=720",
+                    "bedrooms": 3,
+                    "beds": 3,
+                    "bathrooms": 2,
+                    "leftSwipe": [],
+                    "rightSwipe": []
+                }
+            ]
+        },
+        {
+            "name": "GC GOES GC",
+            "tripId": "11",
+            "numPpl": "15",
+            "date": [
+                "2023-07-09T14:00:00.000Z",
+                "2023-07-28T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/23491441?check_out=2023-05-25&adults=6&check_in=2023-05-22&s=42&unique_share_id=E52F77E3-ABCD-47E7-8D03-9DBFB3B6E0E7&_branch_match_id=1174278276857701879&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT0zKS9LLTdUPyM7zdXGOSAqoTAIAmSzOahsAAAA%3D&source_impression_id=p3_1681208092_%2B%2BtUYTDsQGdkBttT&guests=1",
+                "https://www.airbnb.com.au/rooms/33866252?adults=6&check_in=2023-05-22&check_out=2023-05-25&federated_search_id=b6b9f189-c302-4618-bab0-8bc58334d399&source_impression_id=p3_1681394724_%2BVdAWleInWxzc7Cp"
+            ],
+            "location": "Gold Coast",
+            "bnbs": [
+                {
+                    "name": "Luxury stunning Nobby&#x27;s beach home, 2bd + Den!",
+                    "totalCost": 750.33,
+                    "starRating": "4.71",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/103f041b-ce78-4a00-8654-024b7893932d.jpg?im_w=720",
+                    "bedrooms": 3,
+                    "beds": 3,
+                    "bathrooms": 2,
+                    "leftSwipe": [
+                        "1"
+                    ],
+                    "rightSwipe": []
+                },
+                {
+                    "name": "Circle on Cavill 3 Bedroom SPA - Surfers Paradise",
+                    "totalCost": 750.33,
+                    "starRating": "4.91",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/miso/Hosting-33866252/original/bd658d6b-7315-439e-9c37-e1684a7f2b09.jpeg?im_w=720",
+                    "bedrooms": 3,
+                    "beds": 3,
+                    "bathrooms": 2,
+                    "leftSwipe": [],
+                    "rightSwipe": [
+                        "1"
+                    ]
+                }
+            ]
         }
     ]
 }

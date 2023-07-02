@@ -4,6 +4,7 @@ import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import { get, post } from '../helpers'
 import { useParams } from "react-router-dom";
+import BnbTable from "../components/tinder";
 import Tinder from "../components/tinder";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SendIcon from '@mui/icons-material/Send';
@@ -159,6 +160,7 @@ function Trip() {
       </Box>
       <Box sx={{display:'flex', justifyContent:'space-between', margin:'auto'}}>
         <Tinder tripId={tripId}/>
+        <BnbTable tripId={tripId}/>
       </Box>
       </Box>
     </>

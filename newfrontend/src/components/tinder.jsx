@@ -71,8 +71,9 @@ function Tinder({ tripId }) {
 
   const userId = localStorage.getItem('userId')
 
-  return (
-    <div style={{backgroundColor:'blue', width:'100%', height:'100%'}}>
+  return (<>
+    {bnbs.length !== 0 &&
+    <div style={{backgroundColor:'rgb(0,0,0,0.2)', width:'100%', height:'100%'}}>
       <Box sx={{ margin:'auto', width:'100%', height:'100%'}}>
       <div className='cardContainer'>
         {bnbs.map((bnb, index) => (
@@ -103,7 +104,8 @@ function Tinder({ tripId }) {
         </Button>
       </Box>
       </Box>
-    </div>
+    </div>}</>
+    
   );
 }
 
