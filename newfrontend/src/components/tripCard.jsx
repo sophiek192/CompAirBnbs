@@ -25,7 +25,7 @@ function TripCard({ trip }) {
           {trip.name}
         </Typography>
         <Typography variant="body2">
-          {true && `${trip.location} from `}{dateString()}
+          {trip.location && `${trip.location} from `}{dateString()}
         </Typography>
       </CardContent>
       <CardActions>

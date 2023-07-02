@@ -49,7 +49,9 @@
             "nameLast": "khov",
             "email": "s@email.com",
             "organiser": [],
-            "attending": []
+            "attending": [
+                "1"
+            ]
         }
     ],
     "trips": [
@@ -68,7 +70,8 @@
                 "1",
                 "2",
                 "3",
-                "4"
+                "4",
+                "5"
             ],
             "location": "london",
             "bnbs": [
@@ -76,19 +79,20 @@
                     "name": "Seaside Vacation",
                     "cost": 53.33,
                     "wifi": true,
+                    "image": "https://img.staticmb.com/mbcontent/images/uploads/2022/12/Most-Beautiful-House-in-the-World.jpg",
                     "securityCamera": false,
                     "partyPolicy": "We have a strict no party policy",
                     "pictures": [],
                     "bedrooms": 5,
                     "beds": 7,
                     "bathrooms": 5,
-                    "leftSwipe": [
-                    ],
+                    "leftSwipe": [],
                     "rightSwipe": []
                 },
                 {
                     "name": "Treeside Vacation",
                     "cost": 50,
+                    "image": "https://img.staticmb.com/mbcontent/images/uploads/2022/12/Most-Beautiful-House-in-the-World.jpg",
                     "wifi": true,
                     "securityCamera": false,
                     "partyPolicy": "We have a strict no party policy",
@@ -97,26 +101,26 @@
                     "beds": 7,
                     "bathrooms": 5,
                     "leftSwipe": [],
-                    "rightSwipe": [
-                    ]
+                    "rightSwipe": []
                 },
                 {
                     "name": "Fireside Vacation",
                     "cost": 2,
                     "wifi": false,
+                    "image": "https://img.staticmb.com/mbcontent/images/uploads/2022/12/Most-Beautiful-House-in-the-World.jpg",
                     "securityCamera": true,
                     "partyPolicy": "We have a strict PARTAY policy",
                     "pictures": [],
                     "bedrooms": 5,
                     "beds": 7,
                     "bathrooms": 5,
-                    "leftSwipe": [
-                    ],
+                    "leftSwipe": [],
                     "rightSwipe": []
                 },
                 {
                     "name": "Rightside Vacation",
                     "cost": 2,
+                    "image": "https://img.staticmb.com/mbcontent/images/uploads/2022/12/Most-Beautiful-House-in-the-World.jpg",
                     "wifi": false,
                     "securityCamera": true,
                     "partyPolicy": "We have a strict kflmnewfnwlqkefwnq policy",
@@ -125,8 +129,7 @@
                     "beds": 7,
                     "bathrooms": 5,
                     "leftSwipe": [],
-                    "rightSwipe": [
-                    ]
+                    "rightSwipe": []
                 }
             ]
         }

@@ -85,15 +85,17 @@ function Tinder({ tripId }) {
             onCardLeftScreen={() => outOfFrame(index, index)}
           >
             <div
-              // style={{ backgroundImage: 'url(' + card.image + ')' }}
+              style={{ backgroundImage: 'url(' + bnb.image + ')' }}
               className='card'
             >
-              <h3>{bnb.name}</h3>
+            <h3 style={{
+              backgroundColor:'teal'}}>{bnb.name}</h3>
             </div>
           </TinderCard>
         ))}
       </div>
-      <Box sx={{display:'flex', justifyContent:'space-between', width:'350px', margin:'40px auto 0px auto'}}>
+      <Box sx={{display:'flex', justifyContent:'space-between', width:'330px', margin:'40px auto 0px auto',
+    backgroundColor:'white', padding:'10px', borderRadius:'4px'}}>
         <Button variant="outlined" startIcon={<ArrowLeftIcon />} color="success" onClick={() => swipe('left', currentIndex)}>
           Swipe Left
         </Button>

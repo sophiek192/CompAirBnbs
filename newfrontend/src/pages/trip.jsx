@@ -107,6 +107,7 @@ function Trip() {
     variant="contained"
     disableElevation
     onClick={handleClick}
+    sx={{marginLeft:'20px'}}
     endIcon={<KeyboardArrowDownIcon />}
     >
       Invite
@@ -133,6 +134,16 @@ function Trip() {
     )}
     </StyledMenu></>)
 
+  const dateString = () => {
+    if (!trip.date) {
+      return ''
+    }
+    let startDate = new Date(trip.date[0])
+    let endDate = new Date(trip.date[1])
+    startDate = startDate.toDateString().split(' ').slice(0,3).join(' ')
+    endDate = endDate.toDateString().split(' ').slice(0,3).join(' ')
+    return `${startDate} to ${endDate}`
+  }
 
   
   
@@ -140,8 +151,9 @@ function Trip() {
     <>
       <Box sx= {{margin:'30px 60px'}}>
       <Box>
-        <Typography sx={{fontFamily:'Playfair Display', fontSize:'50px', textDecoration:'underline', textDecorationThickness:'2px', textUnderlineOffset:'3px', fontColor:'black'}} variant='h2'>{trip.name}</Typography>
-        <Box sx= {{ display:'flex'}}>
+        <Typography sx={{ fontColor:'black', fontFamily:'Playfair Display', fontSize:'50px', textDecoration:'underline', textDecorationThickness:'2px', textUnderlineOffset:'3px', }} variant='h2'>{trip.name}</Typography>
+        <Box sx= {{ display:'flex', }}>
+        <Typography sx={{ fontColor:'#5A5A5A', fontFamily:'Playfair Display', fontSize:'20px'}}>{trip.location && `${trip.location} from `}{dateString()}</Typography>
         {InviteButton}
         </Box>
       </Box>
