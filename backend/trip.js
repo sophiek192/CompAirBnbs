@@ -17,6 +17,10 @@ export function createTrip(name, userId, numPeople, airBnbLinks, date, location)
         location,
         bnbs: [],
     }
+    
+    for (let airbnbLink of airBnbLinks) {
+        newTrip.bnbs.push(getBnbInfo(airbnbLink));
+    }
 
     data.trips.push(newTrip),
     setData(data);
