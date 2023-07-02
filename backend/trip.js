@@ -1,5 +1,6 @@
 import { getData, setData } from './dataStore.js';
 import HTTPError from 'http-errors';
+import { getBnbInfo } from './webscrapper.js';
 
 
 export function createTrip(name, userId, numPeople, airBnbLinks, date, location) {
@@ -12,23 +13,25 @@ export function createTrip(name, userId, numPeople, airBnbLinks, date, location)
         numPpl: numPeople,
         date: date,
         organisers: [userId],
-        attendees: [{
-            userId,
-            notifications:[]
-          }],
+        attendees: [userId],
         airBnbLinks,
         location,
         bnbs: [],
     }
     
+    const promises = []
     for (let airbnbLink of airBnbLinks) {
-        newTrip.bnbs.push(getBnbInfo(airbnbLink));
+      promises.push(getBnbInfo(airbnbLink))
     }
 
-    data.trips.push(newTrip),
-    setData(data);
+    Promise.all(promises).then(res => {
+      newTrip.bnbs = res;
+      data.trips.push(newTrip),
+      setData(data);
+    })
+    
     return {
-        tripId: id
+        tripId: String(id)
     };
 }
 
@@ -40,7 +43,7 @@ export function tripsList(userId) {
 
     const data = getData();
     for (let trip of data.trips) {
-        if (trip.attendees.map(attendee => attendee.userId).includes(userId)) {
+        if (trip.attendees.includes(userId)) {
             returnArray.push({
                 name: trip.name,
                 tripId: trip.tripId,
@@ -50,7 +53,6 @@ export function tripsList(userId) {
             });
         }
     }
-    console.log(returnArray)
     return { 
         trips: returnArray
     }
@@ -79,11 +81,26 @@ export function inviteToTrip(userId, tripId) {
       return { message: 'success' };
     }
     user.attending.push(tripId)
-    trip.attendees.push({
-        "userId": userId,
-        "notifications": trip.bnbs
-    })
+    trip.attendees.push(userId)
   
     setData(data);
     return {message: 'success'};
+}
+
+export function tripSwipe(userId, tripId, bnbId, direction) {
+  const data = getData();
+  const trip = data.trips.find(x => x.tripId === tripId);
+  const bnb = trip.bnbs[bnbId]
+
+  if (bnb.leftSwipe.includes(userId) || bnb.rightSwipe.includes(userId)){
+    return { message: 'success'};
+  }
+  if (direction === 'left') {
+    bnb.leftSwipe.push(userId)
+  } else {
+    bnb.rightSwipe.push(userId)
+  }
+
+  setData(data);
+  return { message: 'success'};
 }

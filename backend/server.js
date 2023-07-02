@@ -6,7 +6,7 @@ import request from 'sync-request';
 import HTTPError from 'http-errors';
 import fs from 'fs';
 import { authLogin, authRegister } from './auth.js';
-import { createTrip, tripsList, inviteToTrip, tripDetails } from './trip.js';
+import { createTrip, tripsList, inviteToTrip, tripDetails, tripSwipe } from './trip.js';
 import { usersList } from './user.js';
 import { setData } from './dataStore.js';
 import errorHandler from 'middleware-http-errors';
@@ -68,6 +68,11 @@ app.get('/trips', (req, res) => {
 app.get('/trip', (req, res) => {
   const tripId = String(req.query.tripId);
   res.json(tripDetails(tripId));
+})
+
+app.post('/trip/swipe', (req, res) => {
+  const { userId, tripId, bnbId, direction } = req.body;
+  res.json(tripSwipe(userId, tripId, bnbId, direction));
 })
 
 app.get('/users', (req, res) => {

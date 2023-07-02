@@ -4,6 +4,7 @@ import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import { get, post } from '../helpers'
 import { useParams } from "react-router-dom";
+import BnbTable from "../components/bnbTable";
 import Tinder from "../components/tinder";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SendIcon from '@mui/icons-material/Send';
@@ -85,7 +86,7 @@ function Trip() {
       const trip = res[0]
       const users = res[1]
       setNonAttendees(users
-        .filter(user => !trip.attendees.map(x => x.userId).includes(user.userId))
+        .filter(user => !trip.attendees.includes(user.userId))
         .map(user => {return {...user, invited:false}}))
     })
   }, [])
@@ -107,6 +108,7 @@ function Trip() {
     variant="contained"
     disableElevation
     onClick={handleClick}
+    sx={{marginLeft:'20px'}}
     endIcon={<KeyboardArrowDownIcon />}
     >
       Invite
@@ -133,6 +135,16 @@ function Trip() {
     )}
     </StyledMenu></>)
 
+  const dateString = () => {
+    if (!trip.date) {
+      return ''
+    }
+    let startDate = new Date(trip.date[0])
+    let endDate = new Date(trip.date[1])
+    startDate = startDate.toDateString().split(' ').slice(0,3).join(' ')
+    endDate = endDate.toDateString().split(' ').slice(0,3).join(' ')
+    return `${startDate} to ${endDate}`
+  }
 
   
   
@@ -140,13 +152,15 @@ function Trip() {
     <>
       <Box sx= {{margin:'30px 60px'}}>
       <Box>
-        <Typography sx={{fontFamily:'Playfair Display', fontSize:'50px', textDecoration:'underline', textDecorationThickness:'2px', textUnderlineOffset:'3px', fontColor:'black'}} variant='h2'>{trip.name}</Typography>
-        <Box sx= {{ display:'flex'}}>
+        <Typography sx={{ fontColor:'black', fontFamily:'Playfair Display', fontSize:'50px', textDecoration:'underline', textDecorationThickness:'2px', textUnderlineOffset:'3px', }} variant='h2'>{trip.name}</Typography>
+        <Box sx= {{ display:'flex', }}>
+        <Typography sx={{ fontColor:'#5A5A5A', fontFamily:'Playfair Display', fontSize:'20px'}}>{trip.location && `${trip.location} from `}{dateString()}</Typography>
         {InviteButton}
         </Box>
       </Box>
       <Box sx={{display:'flex', justifyContent:'space-between', margin:'auto'}}>
-        <Tinder />
+        <Tinder tripId={tripId}/>
+        <BnbTable tripId={tripId}/>
       </Box>
       </Box>
     </>

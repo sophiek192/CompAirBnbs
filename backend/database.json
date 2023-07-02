@@ -8,6 +8,50 @@
             "email": "f@email.com",
             "organiser": [],
             "attending": []
+        },
+        {
+            "userId": "2",
+            "password": "felixcao",
+            "nameFirst": "elizabeth",
+            "nameLast": "elizabeth",
+            "email": "e@email.com",
+            "organiser": [],
+            "attending": [
+                "1"
+            ]
+        },
+        {
+            "userId": "3",
+            "password": "felixcao",
+            "nameFirst": "aarav",
+            "nameLast": "rego",
+            "email": "a@email.com",
+            "organiser": [],
+            "attending": [
+                "1"
+            ]
+        },
+        {
+            "userId": "4",
+            "password": "felixcao",
+            "nameFirst": "anish",
+            "nameLast": "sanghbi",
+            "email": "an@email.com",
+            "organiser": [],
+            "attending": [
+                "1"
+            ]
+        },
+        {
+            "userId": "5",
+            "password": "sophie",
+            "nameFirst": "sophie",
+            "nameLast": "khov",
+            "email": "s@email.com",
+            "organiser": [],
+            "attending": [
+                "1"
+            ]
         }
     ],
     "trips": [
@@ -23,13 +67,393 @@
                 "1"
             ],
             "attendees": [
-                {
-                    "userId": "1",
-                    "notifications": []
-                }
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
             ],
             "location": "london",
             "bnbs": []
+        },
+        {
+            "name": "fs",
+            "tripId": "2",
+            "numPpl": "12",
+            "date": [
+                "2023-07-15T14:00:00.000Z",
+                "2023-07-28T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/816867123657964157?adults=4&check_in=2023-05-22&check_out=2023-05-25&federated_search_id=3a225db6-7abb-42f1-ba88-8aa644b48a1d&source_impression_id=p3_1684576671_gJD2zKXjyjTOqow8&guests=4"
+            ],
+            "location": "gc",
+            "bnbs": [
+                {}
+            ]
+        },
+        {
+            "name": "re",
+            "tripId": "3",
+            "numPpl": "12",
+            "date": [
+                "2023-07-16T14:00:00.000Z",
+                "2023-07-28T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/600014814156196379?source_impression_id=p3_1688260491_yURD1E5mq9vsyQTL"
+            ],
+            "location": "12",
+            "bnbs": [
+                {}
+            ]
+        },
+        {
+            "name": "12",
+            "tripId": "4",
+            "numPpl": "12",
+            "date": [
+                "2023-07-26T14:00:00.000Z",
+                "2023-07-27T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/600014814156196379?source_impression_id=p3_1688260491_yURD1E5mq9vsyQTL"
+            ],
+            "location": "12",
+            "bnbs": [
+                {}
+            ]
+        },
+        {
+            "name": "12",
+            "tripId": "5",
+            "numPpl": "12",
+            "date": [
+                "2023-07-26T14:00:00.000Z",
+                "2023-07-27T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/600014814156196379?source_impression_id=p3_1688260491_yURD1E5mq9vsyQTL"
+            ],
+            "location": "12",
+            "bnbs": []
+        },
+        {
+            "name": "12",
+            "tripId": "6",
+            "numPpl": "12",
+            "date": [
+                "2023-07-26T14:00:00.000Z",
+                "2023-07-27T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/600014814156196379?source_impression_id=p3_1688260491_yURD1E5mq9vsyQTL"
+            ],
+            "location": "12",
+            "bnbs": []
+        },
+        {
+            "name": "12",
+            "tripId": "7",
+            "numPpl": "12",
+            "date": [
+                "2023-07-26T14:00:00.000Z",
+                "2023-07-27T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/600014814156196379?source_impression_id=p3_1688260491_yURD1E5mq9vsyQTL",
+                "https://www.airbnb.com.au/rooms/40900197?adults=1&category_tag=Tag%3A8186&children=0&enable_m3_private_room=true&infants=0&pets=0&search_mode=flex_destinations_search&check_in=2023-07-24&check_out=2023-07-29&source_impression_id=p3_1688208910_4XEneGtR6Etd5XQc&previous_page_section_name=1000&federated_search_id=0a68c266-4b11-4ce0-8ef5-e66fef1a3faa"
+            ],
+            "location": "12",
+            "bnbs": []
+        },
+        {
+            "name": "please work",
+            "tripId": "8",
+            "numPpl": "12",
+            "date": [
+                "2023-07-16T14:00:00.000Z",
+                "2023-07-21T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/40900197?adults=1&category_tag=Tag%3A8186&children=0&enable_m3_private_room=true&infants=0&pets=0&search_mode=flex_destinations_search&check_in=2023-07-24&check_out=2023-07-29&source_impression_id=p3_1688208910_4XEneGtR6Etd5XQc&previous_page_section_name=1000&federated_search_id=0a68c266-4b11-4ce0-8ef5-e66fef1a3faa"
+            ],
+            "location": "12",
+            "bnbs": []
+        },
+        {
+            "name": "weqe",
+            "tripId": "9",
+            "numPpl": "12",
+            "date": [
+                "2023-07-10T14:00:00.000Z",
+                "2023-07-28T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/816867123657964157?adults=4&check_in=2023-05-22&check_out=2023-05-25&federated_search_id=3a225db6-7abb-42f1-ba88-8aa644b48a1d&source_impression_id=p3_1684576671_gJD2zKXjyjTOqow8&guests=4"
+            ],
+            "location": "lol",
+            "bnbs": [
+                {
+                    "name": "Q1 Resort 35th in the heart of Surfers Paradise",
+                    "totalCost": 750.33,
+                    "starRating": "4.88",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/c156aa11-9da2-408f-9d42-c29308b94007.jpg?im_w=720",
+                    "bedrooms": 2,
+                    "beds": 2,
+                    "bathrooms": 1,
+                    "leftSwipe": [],
+                    "rightSwipe": [
+                        "1"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Gold Coast",
+            "tripId": "10",
+            "numPpl": "15",
+            "date": [
+                "2023-07-01T14:00:00.000Z",
+                "2023-07-21T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/23491441?check_out=2023-05-25&adults=6&check_in=2023-05-22&s=42&unique_share_id=E52F77E3-ABCD-47E7-8D03-9DBFB3B6E0E7&_branch_match_id=1174278276857701879&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT0zKS9LLTdUPyM7zdXGOSAqoTAIAmSzOahsAAAA%3D&source_impression_id=p3_1681208092_%2B%2BtUYTDsQGdkBttT&guests=1",
+                "https://www.airbnb.com.au/rooms/33866252?adults=6&check_in=2023-05-22&check_out=2023-05-25&federated_search_id=b6b9f189-c302-4618-bab0-8bc58334d399&source_impression_id=p3_1681394724_%2BVdAWleInWxzc7Cp"
+            ],
+            "location": "Gold Coast",
+            "bnbs": [
+                {
+                    "name": "Luxury stunning Nobby&#x27;s beach home, 2bd + Den!",
+                    "totalCost": 750.33,
+                    "starRating": "4.69",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/103f041b-ce78-4a00-8654-024b7893932d.jpg?im_w=720",
+                    "bedrooms": 3,
+                    "beds": 3,
+                    "bathrooms": 2,
+                    "leftSwipe": [],
+                    "rightSwipe": []
+                },
+                {
+                    "name": "Circle on Cavill 3 Bedroom SPA - Surfers Paradise",
+                    "totalCost": 750.33,
+                    "starRating": "4.91",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/miso/Hosting-33866252/original/bd658d6b-7315-439e-9c37-e1684a7f2b09.jpeg?im_w=720",
+                    "bedrooms": 3,
+                    "beds": 3,
+                    "bathrooms": 2,
+                    "leftSwipe": [],
+                    "rightSwipe": []
+                }
+            ]
+        },
+        {
+            "name": "GC GOES GC",
+            "tripId": "11",
+            "numPpl": "15",
+            "date": [
+                "2023-07-09T14:00:00.000Z",
+                "2023-07-28T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/23491441?check_out=2023-05-25&adults=6&check_in=2023-05-22&s=42&unique_share_id=E52F77E3-ABCD-47E7-8D03-9DBFB3B6E0E7&_branch_match_id=1174278276857701879&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT0zKS9LLTdUPyM7zdXGOSAqoTAIAmSzOahsAAAA%3D&source_impression_id=p3_1681208092_%2B%2BtUYTDsQGdkBttT&guests=1",
+                "https://www.airbnb.com.au/rooms/33866252?adults=6&check_in=2023-05-22&check_out=2023-05-25&federated_search_id=b6b9f189-c302-4618-bab0-8bc58334d399&source_impression_id=p3_1681394724_%2BVdAWleInWxzc7Cp"
+            ],
+            "location": "Gold Coast",
+            "bnbs": [
+                {
+                    "name": "Luxury stunning Nobby&#x27;s beach home, 2bd + Den!",
+                    "totalCost": 750.33,
+                    "starRating": "4.71",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/103f041b-ce78-4a00-8654-024b7893932d.jpg?im_w=720",
+                    "bedrooms": 3,
+                    "beds": 3,
+                    "bathrooms": 2,
+                    "leftSwipe": [
+                        "1"
+                    ],
+                    "rightSwipe": []
+                },
+                {
+                    "name": "Circle on Cavill 3 Bedroom SPA - Surfers Paradise",
+                    "totalCost": 750.33,
+                    "starRating": "4.91",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/miso/Hosting-33866252/original/bd658d6b-7315-439e-9c37-e1684a7f2b09.jpeg?im_w=720",
+                    "bedrooms": 3,
+                    "beds": 3,
+                    "bathrooms": 2,
+                    "leftSwipe": [],
+                    "rightSwipe": [
+                        "1"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "gold copast",
+            "tripId": "12",
+            "numPpl": "12",
+            "date": [
+                "2023-07-15T14:00:00.000Z",
+                "2023-07-21T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/816867123657964157?adults=4&check_in=2023-05-22&check_out=2023-05-25&federated_search_id=3a225db6-7abb-42f1-ba88-8aa644b48a1d&source_impression_id=p3_1684576671_gJD2zKXjyjTOqow8&guests=4"
+            ],
+            "location": "12",
+            "bnbs": [
+                {
+                    "name": "Q1 Resort 35th in the heart of Surfers Paradise",
+                    "totalCost": 750.33,
+                    "starRating": "4.88",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/c156aa11-9da2-408f-9d42-c29308b94007.jpg?im_w=720",
+                    "bedrooms": 2,
+                    "beds": 2,
+                    "bathrooms": 1,
+                    "leftSwipe": [],
+                    "rightSwipe": [
+                        "1"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "weqe",
+            "tripId": "13",
+            "numPpl": "12",
+            "date": [
+                "2023-07-15T14:00:00.000Z",
+                "2023-07-20T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/816867123657964157?adults=4&check_in=2023-05-22&check_out=2023-05-25&federated_search_id=3a225db6-7abb-42f1-ba88-8aa644b48a1d&source_impression_id=p3_1684576671_gJD2zKXjyjTOqow8&guests=4"
+            ],
+            "location": "LOL",
+            "bnbs": [
+                {
+                    "name": "Q1 Resort 35th in the heart of Surfers Paradise",
+                    "totalCost": 750.33,
+                    "starRating": "4.88",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/c156aa11-9da2-408f-9d42-c29308b94007.jpg?im_w=720",
+                    "bedrooms": 2,
+                    "beds": 2,
+                    "bathrooms": 1,
+                    "leftSwipe": [],
+                    "rightSwipe": []
+                }
+            ]
+        },
+        {
+            "name": "12",
+            "tripId": "14",
+            "numPpl": "12",
+            "date": [
+                "2023-07-16T14:00:00.000Z",
+                "2023-07-28T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/816867123657964157?adults=4&check_in=2023-05-22&check_out=2023-05-25&federated_search_id=3a225db6-7abb-42f1-ba88-8aa644b48a1d&source_impression_id=p3_1684576671_gJD2zKXjyjTOqow8&guests=4"
+            ],
+            "location": "lol",
+            "bnbs": [
+                {
+                    "name": "Q1 Resort 35th in the heart of Surfers Paradise",
+                    "totalCost": 750.33,
+                    "starRating": "4.88",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/c156aa11-9da2-408f-9d42-c29308b94007.jpg?im_w=720",
+                    "bedrooms": 2,
+                    "beds": 2,
+                    "bathrooms": 1,
+                    "leftSwipe": [],
+                    "rightSwipe": []
+                }
+            ]
         }
     ]
 }
