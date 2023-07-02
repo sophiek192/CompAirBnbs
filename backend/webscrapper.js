@@ -1,7 +1,7 @@
 import axios from 'axios';
 import fs from 'fs';
 
-async function getBnbInfo(airbnbLink) {
+export async function getBnbInfo(airbnbLink) {
     try {
         const response = await axios.get(
             airbnbLink
@@ -41,14 +41,15 @@ async function getBnbInfo(airbnbLink) {
         
         const bnb = {
             name: name,
-            // totalCost: ,
-            // costpp: ,
+            totalCost: 750.33,
             starRating: starRating,
             wifi: true,
-            images: img,
+            image: img,
             bedrooms: parseInt(bedrooms),
             beds: parseInt(beds),
             bathrooms: parseInt(bathrooms),
+            leftSwipe:[],
+            rightSwipe: []
         }
         console.log(bnb);
         return bnb;

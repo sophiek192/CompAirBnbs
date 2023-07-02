@@ -1,5 +1,6 @@
 import { getData, setData } from './dataStore.js';
 import HTTPError from 'http-errors';
+import { getBnbInfo } from './webscrapper.js';
 
 
 export function createTrip(name, userId, numPeople, airBnbLinks, date, location) {
@@ -18,14 +19,19 @@ export function createTrip(name, userId, numPeople, airBnbLinks, date, location)
         bnbs: [],
     }
     
+    const promises = []
     for (let airbnbLink of airBnbLinks) {
-        newTrip.bnbs.push(getBnbInfo(airbnbLink));
+      promises.push(getBnbInfo(airbnbLink))
     }
 
-    data.trips.push(newTrip),
-    setData(data);
+    Promise.all(promises).then(res => {
+      newTrip.bnbs = res;
+      data.trips.push(newTrip),
+      setData(data);
+    })
+    
     return {
-        tripId: id
+        tripId: String(id)
     };
 }
 

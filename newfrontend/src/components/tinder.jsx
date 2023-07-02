@@ -27,7 +27,6 @@ function Tinder({ tripId }) {
 
   useEffect(() => {
     get(`/trip?tripId=${tripId}`).then(res => {
-
       setBnbs(res.trip.bnbs.filter(bnb => ! (bnb.leftSwipe.includes(userId)|| bnb.rightSwipe.includes(userId))))
       setCurrentIndex(bnbs.length - 1)
     })

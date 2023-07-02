@@ -29,11 +29,12 @@ function CreateTripForm() {
       userId: localStorage.getItem('userId'),
       numPeople: numPeople,
       location: location,
-      links: links,
+      airBnbLinks: links,
       date: [startDate, endDate]
     })
     .then(() => {
       window.open("/","_self")
+      console.log('success?')
     })
     
   }
