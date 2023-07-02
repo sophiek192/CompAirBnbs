@@ -39,7 +39,7 @@ function Trips() {
     <>
       <Box sx={{margin:'30px 150px'}}>
         <Box sx={{margin: '40px auto 30px auto', display:'flex', justifyContent:'space-between'}}>
-          <Typography sx={{fontFamily:'Playfair Display', fontSize:'40px'}} variant='h1'>My Trips</Typography>
+          <Typography sx={{fontFamily:'Playfair Display', fontSize:'40px', fontColor:'black'}} variant='h1'>My Trips</Typography>
           <Button variant="contained" endIcon={<AddIcon />} onClick={handleOpen} >
             Create Trip
           </Button>

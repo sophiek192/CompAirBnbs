@@ -4,7 +4,7 @@ import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import { get, post } from '../helpers'
 import { useParams } from "react-router-dom";
-import BnbTable from "../components/tinder";
+import BnbTable from "../components/bnbTable";
 import Tinder from "../components/tinder";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SendIcon from '@mui/icons-material/Send';

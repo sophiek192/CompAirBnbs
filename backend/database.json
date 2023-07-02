@@ -353,6 +353,107 @@
                     ]
                 }
             ]
+        },
+        {
+            "name": "gold copast",
+            "tripId": "12",
+            "numPpl": "12",
+            "date": [
+                "2023-07-15T14:00:00.000Z",
+                "2023-07-21T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/816867123657964157?adults=4&check_in=2023-05-22&check_out=2023-05-25&federated_search_id=3a225db6-7abb-42f1-ba88-8aa644b48a1d&source_impression_id=p3_1684576671_gJD2zKXjyjTOqow8&guests=4"
+            ],
+            "location": "12",
+            "bnbs": [
+                {
+                    "name": "Q1 Resort 35th in the heart of Surfers Paradise",
+                    "totalCost": 750.33,
+                    "starRating": "4.88",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/c156aa11-9da2-408f-9d42-c29308b94007.jpg?im_w=720",
+                    "bedrooms": 2,
+                    "beds": 2,
+                    "bathrooms": 1,
+                    "leftSwipe": [],
+                    "rightSwipe": [
+                        "1"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "weqe",
+            "tripId": "13",
+            "numPpl": "12",
+            "date": [
+                "2023-07-15T14:00:00.000Z",
+                "2023-07-20T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/816867123657964157?adults=4&check_in=2023-05-22&check_out=2023-05-25&federated_search_id=3a225db6-7abb-42f1-ba88-8aa644b48a1d&source_impression_id=p3_1684576671_gJD2zKXjyjTOqow8&guests=4"
+            ],
+            "location": "LOL",
+            "bnbs": [
+                {
+                    "name": "Q1 Resort 35th in the heart of Surfers Paradise",
+                    "totalCost": 750.33,
+                    "starRating": "4.88",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/c156aa11-9da2-408f-9d42-c29308b94007.jpg?im_w=720",
+                    "bedrooms": 2,
+                    "beds": 2,
+                    "bathrooms": 1,
+                    "leftSwipe": [],
+                    "rightSwipe": []
+                }
+            ]
+        },
+        {
+            "name": "12",
+            "tripId": "14",
+            "numPpl": "12",
+            "date": [
+                "2023-07-16T14:00:00.000Z",
+                "2023-07-28T14:00:00.000Z"
+            ],
+            "organisers": [
+                "1"
+            ],
+            "attendees": [
+                "1"
+            ],
+            "airBnbLinks": [
+                "https://www.airbnb.com.au/rooms/816867123657964157?adults=4&check_in=2023-05-22&check_out=2023-05-25&federated_search_id=3a225db6-7abb-42f1-ba88-8aa644b48a1d&source_impression_id=p3_1684576671_gJD2zKXjyjTOqow8&guests=4"
+            ],
+            "location": "lol",
+            "bnbs": [
+                {
+                    "name": "Q1 Resort 35th in the heart of Surfers Paradise",
+                    "totalCost": 750.33,
+                    "starRating": "4.88",
+                    "wifi": true,
+                    "image": "https://a0.muscache.com/im/pictures/c156aa11-9da2-408f-9d42-c29308b94007.jpg?im_w=720",
+                    "bedrooms": 2,
+                    "beds": 2,
+                    "bathrooms": 1,
+                    "leftSwipe": [],
+                    "rightSwipe": []
+                }
+            ]
         }
     ]
 }
