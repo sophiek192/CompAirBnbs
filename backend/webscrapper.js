@@ -44,15 +44,14 @@ export async function getBnbInfo(airbnbLink) {
         
         const bnb = {
             name: name,
-            totalCost: 750.33,
+            // totalCost: ,
+            // costpp: ,
             starRating: starRating,
             wifi: true,
-            image: img,
+            images: img,
             bedrooms: parseInt(bedrooms),
             beds: parseInt(beds),
             bathrooms: parseInt(bathrooms),
-            leftSwipe:[],
-            rightSwipe: []
         }
         //console.log(bnb);
         return bnb;
